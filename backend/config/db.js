@@ -3,12 +3,16 @@ import mongoose from "mongoose";
 
 configDotenv();
 
-const connectToDb = async () => {
+const connectDB = async (connectionUrl) => {
   try {
-    await mongoose.connect(process.env.MONGO_URL);
-    console.log(`Mongodb is connected`);
+    await mongoose.connect(connectionUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("Connected to MongoDB : " + connectionUrl);
   } catch (error) {
-    console.log(`Error coming connection to mongodb`, error);
+    console.error("Failed to connect to MongoDB", error);
+    process.exit(1);
   }
 };
 
