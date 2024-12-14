@@ -4,7 +4,7 @@ import axios from "axios";
 const App = () => {
   const [formData, setFormData] = useState({
     authorName: "",
-    coAuthorName: "",
+    coAuthors: [""], // Start with one co-author field
     email: "",
     phoneNumber: "",
     university: "",
@@ -33,7 +33,6 @@ const App = () => {
       return;
     }
 
-    // Optional: Limit file size to 5MB
     const maxSize = 5 * 1024 * 1024; // 5MB
     if (file.size > maxSize) {
       alert("File size should not exceed 5MB.");
@@ -43,16 +42,37 @@ const App = () => {
     setFormData({ ...formData, file });
   };
 
+  const handleCoAuthorChange = (index, value) => {
+    const newCoAuthors = [...formData.coAuthors];
+    newCoAuthors[index] = value;
+    setFormData({ ...formData, coAuthors: newCoAuthors });
+  };
+
+  const addCoAuthorField = () => {
+    setFormData({ ...formData, coAuthors: [...formData.coAuthors, ""] });
+  };
+
+  const removeCoAuthorField = (index) => {
+    const newCoAuthors = [...formData.coAuthors];
+    newCoAuthors.splice(index, 1);
+    setFormData({ ...formData, coAuthors: newCoAuthors });
+  };
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Prepare form data
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
-      data.append(key, formData[key]);
+      if (key === "coAuthors") {
+        formData.coAuthors.forEach((coAuthor, index) => {
+          data.append(`coAuthors[${index}]`, coAuthor);
+        });
+      } else {
+        data.append(key, formData[key]);
+      }
     });
 
     try {
@@ -62,7 +82,6 @@ const App = () => {
         },
       });
 
-      console.log("Response:", response); // Log full response to inspect
       if (response.status === 200) {
         alert(response.data.message || "Paper submitted successfully!");
       } else {
@@ -70,14 +89,9 @@ const App = () => {
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
-      if (error.response) {
-        console.error("Response error data:", error.response.data);
-        alert(`Error: ${error.response.data.error || "Submission failed!"}`);
-      } else {
-        alert("Network error or server issue.");
-      }
+      alert("Submission failed! Please try again.");
     } finally {
-      setIsLoading(false); // Set loading to false after submission attempt
+      setIsLoading(false);
     }
   };
 
@@ -87,32 +101,48 @@ const App = () => {
         Paper Submission
       </h1>
       <form onSubmit={handleSubmit} className='space-y-6'>
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-          <div>
-            <label className='block text-lg font-medium text-gray-700 mb-2'>
-              Author's Name
-            </label>
-            <input
-              type='text'
-              name='authorName'
-              value={formData.authorName}
-              onChange={handleInputChange}
-              required
-              className='block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
-            />
-          </div>
-          <div>
-            <label className='block text-lg font-medium text-gray-700 mb-2'>
-              Co-Author's Name
-            </label>
-            <input
-              type='text'
-              name='coAuthorName'
-              value={formData.coAuthorName}
-              onChange={handleInputChange}
-              className='block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
-            />
-          </div>
+        <div>
+          <label className='block text-lg font-medium text-gray-700 mb-2'>
+            Author's Name
+          </label>
+          <input
+            type='text'
+            name='authorName'
+            value={formData.authorName}
+            onChange={handleInputChange}
+            required
+            className='block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
+          />
+        </div>
+
+        <div>
+          <label className='block text-lg font-medium text-gray-700 mb-2'>
+            Co-Authors' Names
+          </label>
+          {formData.coAuthors.map((coAuthor, index) => (
+            <div key={index} className='flex items-center space-x-4 mb-2'>
+              <input
+                type='text'
+                value={coAuthor}
+                onChange={(e) => handleCoAuthorChange(index, e.target.value)}
+                className='block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
+              />
+              <button
+                type='button'
+                onClick={() => removeCoAuthorField(index)}
+                className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600'
+              >
+                -
+              </button>
+            </div>
+          ))}
+          <button
+            type='button'
+            onClick={addCoAuthorField}
+            className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600'
+          >
+            + Add Co-Author
+          </button>
         </div>
 
         <div>
@@ -205,7 +235,7 @@ const App = () => {
             value={formData.country}
             onChange={handleInputChange}
             required
-            className='block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'
+            className="block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500'"
           >
             <option value=''>Select Country</option>
             <option value='India'>India</option>
