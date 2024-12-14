@@ -31,6 +31,7 @@ import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import fs from "fs/promises"; // Import the promises API of fs
 import { Submission } from "./models/submission.js";
 import { setupEmailTransporter } from "./utils/email.js";
 
@@ -128,9 +129,21 @@ app.post("/submit", upload, async (req, res) => {
       ],
     });
 
-    res.status(200).json({ message: "Submission successful!" });
+    // Delete the file after sending emails
+    await fs.unlink(req.file.path);
+    res.status(200).json({ message: "Submission successful !" });
   } catch (error) {
     console.error("Error saving submission or sending email:", error);
+
+    // Ensure the file is deleted even if an error occurs
+    if (req.file && req.file.path) {
+      try {
+        await fs.unlink(req.file.path);
+      } catch (unlinkError) {
+        console.error("Error deleting file:", unlinkError);
+      }
+    }
+
     res
       .status(500)
       .json({ error: "An error occurred while processing your submission." });
