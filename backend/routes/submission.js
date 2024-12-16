@@ -1,18 +1,9 @@
-// import mongoose from "mongoose";
+import express from "express";
+import { upload } from "../middlewares/multer.js";
+import { submitPaper } from "../controllers/submissionController.js";
 
-// const submissionSchema = new mongoose.Schema({
-//   authorName: String,
-//   coAuthorName: String,
-//   email: String,
-//   phoneNumber: String,
-//   university: String,
-//   state: String,
-//   designation: String,
-//   department: String,
-//   country: String,
-//   category: String,
-//   filePath: String,
-//   date: { type: Date, default: Date.now },
-// });
+const router = express.Router();
 
-// export const Submission = mongoose.model("Submission", submissionSchema);
+router.post("/submit", upload.single("file"), submitPaper);
+
+export default router;
