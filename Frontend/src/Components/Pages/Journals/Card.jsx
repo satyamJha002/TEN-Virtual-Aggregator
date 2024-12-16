@@ -22,7 +22,11 @@ const Card = ({ title, ISSN }) => {
         >
           Submit Paper
         </a> */}
-        <Link to='/submit' target='_blank' className='journal-btn'>
+        <Link
+          to='/submit'
+          state={{ title }} // Passing the title via state
+          className='journal-btn'
+        >
           Submit Paper
         </Link>
       </div>
