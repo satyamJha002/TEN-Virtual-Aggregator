@@ -62,10 +62,8 @@ export const submitPaper = async (req, res) => {
     } else if (error.name === "MongoError") {
       return res.status(500).json({ error: "Database error occurred." });
     }
-    return res
-      .status(500)
-      .json({
-        error: "Unexpected server error occurred. Please try again later.",
-      });
+    return res.status(500).json({
+      error: "Unexpected server error occurred. Please try again later.",
+    });
   }
 };
