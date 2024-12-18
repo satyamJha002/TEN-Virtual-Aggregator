@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectToDb } from "./config/db.js";
 import submissionRoutes from "./routes/submission.js";
+import contactRoute from "./routes/contactRoute.js";
 
 dotenv.config();
 const app = express();
@@ -16,6 +17,8 @@ app.use("/uploads", express.static("uploads"));
 
 connectToDb(process.env.MONGO_URI);
 app.use("/submit", submissionRoutes);
+// app.use("/api/submissions", submissionRoutes);
+app.use("/api", contactRoute);
 app.get("/", (req, res) => {
   res.send("Welcome to Virtual Conference");
 });
