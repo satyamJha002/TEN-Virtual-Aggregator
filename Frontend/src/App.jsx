@@ -1,37 +1,21 @@
-import { useState } from 'react'
-import './App.css'
-import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Footer from './Components/Footer/Footer'
-
-import VirtualNavbar from './Components/Navbar/Navbar'
-import ContactUs from './Components/Pages/ContactUs/ContactUs'
-
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./Components/Footer/Footer";
+import Journals from "./Components/Pages/Journals/Journals";
+import Submitpaper from "./Components/Pages/Journals/Submitpaper";
+import VirtualNavbar from "./Components/Navbar/Navbar";
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <BrowserRouter>
-    {/* <ScrollToTop/> */}
     <VirtualNavbar />
-    <Routes >
-   
-
-  
-    <Route path='/ContactUs' element={<ContactUs/>} />
-    
-      
-
-
-    </Routes>
-    <Footer />
-
-
-
+      <Routes>
+        <Route path='/' element={<Footer />} />
+        <Route path='/journals' element={<Journals />} />
+        <Route path='/submit' element={<Submitpaper />} />
+      </Routes>
+      <Footer />
     </BrowserRouter>
-    
-  
-      
-  )
+  );
 }
 
-export default App
+export default App;

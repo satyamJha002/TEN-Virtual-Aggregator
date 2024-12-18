@@ -1,26 +1,28 @@
 import express from "express";
+import bodyParser from "body-parser";
 import cors from "cors";
-import { configDotenv } from "dotenv";
-import morgan from "morgan";
-// import connectToDb from "./config/db.js";
+import dotenv from "dotenv";
+import { connectToDb } from "./config/db.js";
+import submissionRoutes from "./routes/submission.js";
+import contactRoute from "./routes/contactRoute.js";
 
-configDotenv();
-
+dotenv.config();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use("/uploads", express.static("uploads"));
 
-// connectToDb();
-
-// Test for server is  running
+connectToDb(process.env.MONGO_URI);
+app.use("/submit", submissionRoutes);
+// app.use("/api/submissions", submissionRoutes);
+app.use("/api", contactRoute);
 app.get("/", (req, res) => {
-  res.send("Server is running");
+  res.send("Welcome to Virtual Conference");
 });
 
-app.use(cors());
-app.use(express.json());
-app.use(morgan("dev"));
-
 app.listen(PORT, () => {
-  console.log(`Server is running at ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
