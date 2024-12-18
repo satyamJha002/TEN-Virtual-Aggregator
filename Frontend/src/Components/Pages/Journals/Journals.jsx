@@ -1,4 +1,5 @@
 import Card from "./Card"
+import "./journal.css"
 
 function Journals() {
     return (
