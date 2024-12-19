@@ -1,9 +1,8 @@
-import daisyui from "daisyui"
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js}"],
+export default {
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"], // Include all files where Tailwind is used
   theme: {
     extend: {},
   },
-  plugins: [daisyui],
-}
+  plugins: [], // Add plugins if required
+};
