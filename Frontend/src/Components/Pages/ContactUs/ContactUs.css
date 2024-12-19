@@ -1,0 +1,331 @@
+/* General Page Layout */
+.contact-page {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin: 0 auto 15px;
+    background-color: #f9f9f9;
+    max-width: 1200px;
+  }
+  
+  .mobile-buttons {
+    display: none;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mobile-button {
+    padding: 10px;
+    background-color: #80011f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .mobile-button:hover {
+    background-color: #a8002c;
+  }
+  
+  /* Mobile View Section */
+  .mobile-view {
+    margin-top: 20px;
+  }
+  .mobile-heading {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  
+  /* Contact Form Styling */
+  .contact-form {
+    flex: 2;
+    max-width: 58%;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background-color: #80011f;
+  }
+  
+  .contact-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .input-field,
+  .textarea-field {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: transparent;
+  }
+  
+  .input-field:focus,
+  .textarea-field:focus {
+    border-bottom: 1px solid #007bff;
+  }
+  
+  .textarea-field {
+    width: 100%;
+    resize: none;
+    min-height: 120px;
+  }
+  
+  .captcha-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .captcha-label {
+    font-size: 14px;
+  }
+  
+  .submit-button {
+    width: 80px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .contact-info p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  /* Browse Section Styling */
+  .browse-section {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .browse-by-country,
+  .browse-by-city,
+  .browse-by-topics {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .browse-by-country .section-title,
+  .browse-by-city .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .browse-by-country .section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #80011f;
+  }
+  
+  .browse-by-country div {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  .browse-by-country strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #80011f;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .city-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .city-button {
+    background-color: #80011f;
+    color: #ffffff;
+    padding: 8px 15px;
+    font-size: 12px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+  }
+  
+  
+  
+  
+  .city-button:hover {
+    background-color: #a8002c;
+  }
+  
+  .browse-by-topics ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .browse-by-topics li {
+    margin-bottom: 5px;
+    font-size: 14px;
+    position: relative;
+    padding-left: 15px;
+  }
+  
+  .browse-by-topics li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: #80011f;
+    font-size: 16px;
+  }
+  
+  .browse-by-topics li:hover {
+    color: #80011f;
+    cursor: pointer;
+  }
+  
+  /* Responsive Styling */
+  @media screen and (max-width: 1024px) {
+    .contact-page {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .contact-form,
+    .browse-section {
+      max-width: 100%;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .city-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .contact-page {
+      flex-direction: column;
+    }
+  
+    .city-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .city-button {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+  @media screen and (min-width: 321px) {
+    .mobile-buttons {
+      display: none; /* Hide mobile buttons on larger screens */
+    }
+  
+    .mobile-view {
+      display: none; /* Hide dynamic sections on larger screens */
+    }
+  
+    .browse-by-city,
+    .browse-by-country,
+    .browse-by-topics {
+      display: block; /* Show original sections on larger screens */
+    }
+  }
+  
+  @media screen and (max-width: 320px) {
+    .contact-page {
+      gap:0px;
+    }
+    .mobile-buttons {
+      display: flex;
+    }
+  
+    .browse-by-city,
+    .browse-by-country,
+    .browse-by-topics {
+      display: none; /* Keep the original content hidden on small screens */
+    }
+  
+    .mobile-view {
+      display: block; /* Render dynamic sections */
+    }
+    .section-title {
+      font-size: 18px;
+    }
+  
+    .input-field,
+    .textarea-field {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .submit-button {
+      width: 70px;
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .city-button {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    .mobile-heading {
+      display: block;
+    }
+    
+  }

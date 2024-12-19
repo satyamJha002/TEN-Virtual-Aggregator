@@ -4,6 +4,7 @@ import Footer from "./Components/Footer/Footer";
 import Journals from "./Components/Pages/Journals/Journals";
 import Submitpaper from "./Components/Pages/Journals/Submitpaper";
 import VirtualNavbar from "./Components/Navbar/Navbar";
+import ContactUs from "./Components/Pages/ContactUs/ContactUs";
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
         <Route path='/' element={<Footer />} />
         <Route path='/journals' element={<Journals />} />
         <Route path='/submit' element={<Submitpaper />} />
+        <Route path='/ContactUs' element={<ContactUs />} />
       </Routes>
       <Footer />
     </BrowserRouter>
