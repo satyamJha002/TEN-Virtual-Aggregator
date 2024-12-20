@@ -17,7 +17,8 @@ app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
 connectToDb(process.env.MONGO_URI);
-app.use("/api/submissions", submissionRoutes);
+app.use("/submit", submissionRoutes);
+// app.use("/api/submissions", submissionRoutes);
 app.use("/api", contactRoute);
 app.use("/api", eventRoute);
 app.get("/", (req, res) => {

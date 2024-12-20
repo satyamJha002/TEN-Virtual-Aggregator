@@ -4,6 +4,6 @@ import { submitPaper } from "../controllers/submissionController.js";
 
 const router = express.Router();
 
-router.post("/submit", upload.single("file"), submitPaper);
+router.post("/", upload.single("file"), submitPaper);
 
 export default router;
