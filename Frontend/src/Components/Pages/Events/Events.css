@@ -1,0 +1,335 @@
+/* Base Container Styles */
+.scientific-events-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Sidebar Styles */
+  .events-sidebar {
+    flex: 0 0 300px;
+  }
+  
+  .calgary-header {
+    background-color: #721c24;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .calgary-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* Promo Box Styles */
+  .promo-box {
+    border: 1px solid #ddd;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+  }
+  
+  .promo-box.conferences {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    background-size: cover;
+    color: white;
+  }
+  
+  .promo-box h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f39c12;
+  }
+  
+  .promo-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .promo-box li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Badge Styles */
+  .scopus-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .scopus-badge span {
+    color: #ff5722;
+    font-weight: bold;
+  }
+  
+  .citation-index {
+    background: #ff5722;
+    color: white !important;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+  }
+  
+  /* Main Content Styles */
+  .events-main-content {
+    flex: 1;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+  
+  .header h1 {
+    color: #721c24;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #721c24;
+  }
+  
+  /* Navigation Styles */
+  .month-navigation {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .month-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  
+  .month-btn:hover {
+    color: #721c24;
+  }
+  
+  .month-btn.active {
+    color: #721c24;
+    font-weight: bold;
+    border-bottom: 2px solid #721c24;
+  }
+  
+  /* Table Styles */
+  .events-table {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .table-header {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    background-color: #721c24;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+  }
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table-row:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .date-col {
+    font-weight: 500;
+  }
+  
+  .name-col {
+    padding-right: 1rem;
+  }
+  
+  .venue-col {
+    font-style: italic;
+  }
+  
+  /* No Events Message */
+  .no-events {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Pagination Styles */
+  .pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .page-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    color: #666;
+  }
+  
+  .page-btn:hover {
+    background: #f8f9fa;
+  }
+  
+  .page-btn.active {
+    background: #721c24;
+    color: white;
+    border-color: #721c24;
+  }
+  
+  /* Large Desktops (1440px and up) */
+  @media (min-width: 1440px) {
+    .scientific-events-container {
+      padding: 2rem;
+      gap: 2rem;
+    }
+  }
+  
+  /* Regular Desktops (1024px to 1439px) */
+  @media (max-width: 1439px) {
+    .scientific-events-container {
+      max-width: 1200px;
+    }
+  }
+  
+  /* Tablets and Small Desktops (768px to 1023px) */
+  @media (max-width: 1023px) {
+    .scientific-events-container {
+      flex-direction: column;
+    }
+  
+    .events-sidebar {
+      flex: none;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  
+    .promo-box {
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+  
+    .table-header,
+    .table-row {
+      grid-template-columns: 120px 1fr 180px;
+    }
+  }
+  
+  /* Large Tablets (601px to 767px) */
+  @media (max-width: 767px) {
+    .scientific-events-container {
+      padding: 1rem;
+    }
+  
+    .header h1 {
+      font-size: 1.5rem;
+    }
+  
+    .month-navigation {
+      gap: 0.5rem;
+    }
+  
+    .month-btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  
+    .table-header,
+    .table-row {
+      grid-template-columns: 100px 1fr 150px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Mobile Phones (up to 600px) */
+  @media (max-width: 600px) {
+    .table-header,
+    .table-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  
+    .table-header {
+      display: none;
+    }
+  
+    .table-row {
+      padding: 1rem;
+      border-bottom: 2px solid #ddd;
+    }
+  
+    .date-col,
+    .name-col,
+    .venue-col {
+      padding: 0.25rem 0;
+    }
+  
+    .date-col::before {
+      content: "Date: ";
+      font-weight: bold;
+    }
+  
+    .name-col::before {
+      content: "Conference: ";
+      font-weight: bold;
+    }
+  
+    .venue-col::before {
+      content: "Venue: ";
+      font-weight: bold;
+    }
+  
+    .venue-col {
+      border-top: none;
+    }
+  
+    .pagination {
+      gap: 0.25rem;
+    }
+  
+    .page-btn {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Small Mobile Phones (up to 320px) */
+  @media (max-width: 320px) {
+    .scientific-events-container {
+      padding: 0.5rem;
+    }
+  
+    .header h1 {
+      font-size: 1.2rem;
+    }
+  
+    .month-navigation {
+      justify-content: center;
+    }
+  
+    .month-btn {
+      padding: 0.2rem 0.4rem;
+      font-size: 0.75rem;
+    }
+  }
