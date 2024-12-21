@@ -124,8 +124,4 @@ const ContactUs = () => {
   );
 };
 
-<<<<<<< HEAD
 export default ContactUs;
-=======
-export default ContactUs;
->>>>>>> 6d946708ccf75224752f4f31eef8d327b2a210d3
