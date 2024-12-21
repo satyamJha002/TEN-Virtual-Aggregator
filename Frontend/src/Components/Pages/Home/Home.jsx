@@ -1,3 +1,19 @@
+import React from "react";
+import FeatureEvents from "./featureEvents";
+import FeaturedOrganizer from "./featuredOrganizer";
+
+const Home = () => {
+  return (
+    <div>
+      <FeatureEvents />
+      <FeaturedOrganizer />
+    </div>
+  );
+};
+
+export default Home;
+
+/* 
 import axios from "axios";
 import React, { useState } from "react";
 
@@ -53,3 +69,4 @@ const Home = () => {
 };
 
 export default Home;
+ */
