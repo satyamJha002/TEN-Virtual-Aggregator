@@ -168,6 +168,11 @@
   .mobile-view {
     position: static; /* Disable floating in desktop view */
     background-color: transparent; /* Remove background for desktop */
+<<<<<<< HEAD
     box-shadow: none; /* Remove shadow for desktop */
   }
 }
+=======
+    box-shadow: none; /* Remove shadow for desktop */
+  }}
+>>>>>>> 6d946708ccf75224752f4f31eef8d327b2a210d3

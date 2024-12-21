@@ -1,11 +1,146 @@
-import React from 'react'
+import React from 'react';
+import FeatureEvents from './featureEvents';
+import FeaturedOrganizer from './featuredOrganizer';
+import BrowseByCity from '../AddEvent/BrowseByCities';
+import BrowseByCountry from '../AddEvent/BrowseByCountry';
+import BrowseByTopics from '../AddEvent/BrowseByTopic';
+import './Home.css';
 
 const Home = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <div className="max-w-[1440px] mx-auto">
+      {/* Search Section */}
+      <div className="header-container">
+        <h1>Find Your Next Conference</h1>
+        <form className="search-form">
+          <input
+            type="text"
+            placeholder="Search events or categories"
+            className="input-field"
+          />
+          <input
+            type="text"
+            placeholder="City or location"
+            className="input-field"
+          />
+          <select className="dropdown">
+            <option value="all-dates">All Dates</option>
+            <option value="2025-01">January 2025</option>
+            <option value="2025-02">February 2025</option>
+          </select>
+          <button type="submit" className="search-button">
+            Search
+          </button>
+        </form>
+      </div>
 
-export default Home
+      {/* Welcome Section */}
+      <div className="welcome-section">
+        <h2>Welcome To Academic World Research 2025</h2>
+        <div className="line-divider"></div>
+        <p>
+          Academic World Research (AWR) will be the game changer of your life because it is going to give
+          you the latest updates on all the International Conference Alerts 2025. Be ready to get a wealth
+          of information on upcoming conferences in 2025, including deadlines, topics, strategies to choose
+          reputed journals, submission guidelines, and complete support with regard to paper publications.
+          Stay ahead of your competitors with AWR and elevate your academic journey.
+        </p>
+      </div>
+
+      <div className="main-content">
+        <div className="left-column">
+          <FeatureEvents />
+
+          {/* About Us Section */}
+          <div className="welcome-section">
+            <h2>About Us</h2>
+            <div className="line-divider"></div>
+            <p>
+              Academic World Research is world's most reliable index of academic activities like international
+              conferences and professional events. If you are looking for a perfect platform to learn and share,
+              AWR is the best gateway to reserve your slot at conferences of your need. Certifying the conferences
+              with verification and their authenticity makes us a trusted partner of academicians and professionals
+              to help them to get notified about upcoming conferences scheduled worldwide.
+            </p>
+            <p>
+              International conferences on science, engineering, management, health, and allied areas at Academic
+              World Research are the centers for academic and business interaction, which makes us a flag bearer
+              in the global market of professional event promotion. Detailed review, assessment, and user-friendly
+              accessibility make us the trailblazer of academic conferences worldwide.
+            </p>
+            <p>
+              Academic World Research is a pinboard to find and bookmark international conferences of your need
+              that suit your academic and professional requirements.
+            </p>
+          </div>
+          <FeaturedOrganizer />
+        </div>
+        <div className="right-column">
+          <BrowseByCity />
+          <BrowseByCountry />
+          <BrowseByTopics />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+
+/* 
+import axios from "axios";
+import React, { useState } from "react";
+
+const Home = () => {
+  const [query, setQuery] = useState("");
+  const [location, setLocation] = useState("");
+  const [dateFilter, setDateFilter] = useState("All Date");
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/events/search",
+        {
+          params: { query, location, dateFilter },
+        }
+      );
+      console.log(response.data.data);
+    } catch (error) {
+      console.log("Error searching events", error.response.data.message);
+    }
+  };
+  return (
+    <div>
+      <div>
+        <h1>Find Your Next Conference</h1>
+        <input
+          type="text"
+          placeholder="Search events or categories"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="City or location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <select
+          value={dateFilter}
+          onChange={(e) => setDateFilter(e.target.value)}
+        >
+          <option value="All Data">All Dates</option>
+          <option value="Tomorrow">Tomorrow</option>
+          <option value="This Week">This Week</option>
+          <option value="This Weekend">This Weekend</option>
+          <option value="Next Week">Next Week</option>
+          <option value="Next Month">Next Month</option>
+        </select>
+        <button onClick={handleSearch}>Search</button>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+ */
