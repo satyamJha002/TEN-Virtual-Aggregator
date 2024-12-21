@@ -5,6 +5,9 @@ import Journals from "./Components/Pages/Journals/Journals";
 import Submitpaper from "./Components/Pages/Journals/Submitpaper";
 import VirtualNavbar from "./Components/Navbar/Navbar";
 import AddEvent from "./Components/Pages/AddEvent/AddEvent";
+import ContactUs from "./Components/Pages/ContactUs/ContactUs";
+import Blog from "./Components/Pages/Blog/Blog";
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +17,8 @@ function App() {
         <Route path="/journals" element={<Journals />} />
         <Route path="/submit" element={<Submitpaper />} />
         <Route path="/add-event" element={<AddEvent />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
       <Footer />
     </BrowserRouter>

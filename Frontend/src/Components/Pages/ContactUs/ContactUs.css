@@ -1,0 +1,173 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+  position: relative; /* To allow .mobile-view to float within this container */
+}
+
+.contact-form {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensures .mobile-view can float above */
+  z-index: 1;
+}
+
+.contact-form h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+.contact-form p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.textarea-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 100px;
+  resize: vertical;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.captcha-label {
+  margin-left: 10px;
+  color: #666;
+}
+
+.submit-button {
+  padding: 12px 20px;
+  background-color: #991b1b;
+
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.contact-info {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.contact-info p {
+  margin: 5px 0;
+}
+
+.browse-section {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.browse-section h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #444;
+}
+
+.mobile-heading {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.mobile-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mobile-buttons button {
+  flex: 1; /* Ensure buttons span equally across the row */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+/* .mobile-buttons button:hover {
+  background-color: #0056b3;
+  color: #fff;
+} */
+
+.mobile-view {
+  position: absolute; /* Float this section above */
+  top: 100px; /* Adjust position */
+  left: 0;
+  right: 0;
+  z-index: 10; /* Ensure it floats above form */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Transparent white for floating effect */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add shadow for floating effect */
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .contact-page {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .contact-form {
+    width: 48%;
+  }
+
+  .browse-section {
+    width: 48%;
+  }
+
+  .mobile-view {
+    position: static; /* Disable floating in desktop view */
+    background-color: transparent; /* Remove background for desktop */
+    box-shadow: none; /* Remove shadow for desktop */
+  }
+}
