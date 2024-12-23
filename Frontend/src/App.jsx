@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Journals from "./Components/Pages/Journals/Journals";
 import Submitpaper from "./Components/Pages/Journals/Submitpaper";
-import VirtualNavbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import Events from "./Components/Pages/Events/Events";
 import AddEvent from "./Components/Pages/AddEvent/AddEvent";
 import ContactUs from "./Components/Pages/ContactUs/ContactUs";
@@ -13,7 +13,7 @@ import Home from "./Components/Pages/Home/Home";
 function App() {
   return (
     <BrowserRouter>
-      <VirtualNavbar />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/journals" element={<Journals />} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/add-event" element={<AddEvent />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
       </Routes>
       <Footer />

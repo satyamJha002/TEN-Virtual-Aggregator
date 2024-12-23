@@ -28,20 +28,23 @@ body {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Even spacing between columns */
   align-items: flex-start;
   flex-wrap: wrap;
   position: relative;
   z-index: 2;
   padding: 0 20px;
-  gap: 0;
+  gap: 20px; /* Consistent gap between sections */
+  margin-bottom: 30px;
 }
 
 .footer-section,
 .footer-section2 {
-  padding: 10px;
+  padding: 10px 15px; /* Add padding for spacing */
   margin: 0;
-  width: 30%;
+  width: 30%; /* Equal width for columns */
+  text-align: left; /* Default left alignment */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .footer-section h3,
@@ -71,7 +74,7 @@ body {
 .footer-section ul,
 .footer-section2 ul {
   list-style: none;
-  padding: 0; 
+  padding: 0;
 }
 
 .footer-section li,
@@ -80,53 +83,45 @@ body {
   margin-bottom: 8px;
 }
 
-.footer-section2 {
-  margin-left: 0;
-}
-
 .footer-bottom {
   border-top: 1px solid #333;
-  margin-top: 20px;
+  margin-top: 40px;
   padding-top: 10px;
   text-align: center;
   font-size: 12px;
+  position: absolute; /* Make it stick to the bottom */
+  bottom: 0; /* Attach to the bottom of the footer */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center alignment correction */
   z-index: 2;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .footer-content {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: wrap; /* Adjust layout for responsiveness */
+    justify-content: space-between; /* Maintain spacing */
     gap: 20px;
   }
 
   .footer-section,
   .footer-section2 {
-    width: 45%;
-    text-align: left;
-  }
-
-  .footer-section:last-child {
-    text-align: left;
-    width: 100%;
+    width: 45%; /* Adjust width for smaller screens */
+    padding: 10px 10px; /* Adjust padding */
   }
 }
 
 @media (max-width: 768px) {
   .footer-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content: center; /* Center the sections horizontally */
+    gap: 15px; /* Reduce gap for narrower screens */
   }
 
   .footer-section,
   .footer-section2 {
-    width: 100%;
-    text-align: center;
-  }
-  .footer-section:last-child {
-    text-align: center;
+    width: 100%; /* Full-width for smaller screens */
+    text-align: center; /* Center text */
+    padding: 15px 20px; /* Adjust padding */
   }
 
   .footer-section h3,
@@ -147,20 +142,21 @@ body {
 
 @media (max-width: 320px) {
   .footer {
-    padding: 10px 20px;
+    padding: 10px 15px;
   }
 
   .footer-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center; 
+    flex-wrap: wrap; /* Ensure sections stack vertically */
+    justify-content: center; /* Center sections */
+    align-items: center;
+    margin-bottom: 40px;
   }
 
   .footer-section,
   .footer-section2 {
-    padding: 15px;
-    width: 100%; 
-    text-align: center; 
+    width: 100%; /* Full-width for smallest screens */
+    text-align: center;
+    padding: 10px 10px; /* Maintain padding */
   }
 
   .footer-section h3,
@@ -171,7 +167,7 @@ body {
   .footer-section p,
   .footer-section li,
   .footer-section2 li {
-    font-size: 12px;
+    font-size: 12px; /* Smaller font for readability */
   }
 
   .footer-bottom {

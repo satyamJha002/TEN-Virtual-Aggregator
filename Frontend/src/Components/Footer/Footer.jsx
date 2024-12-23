@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className='footer-content'>
-      <div className="footer-section">
+      <div className="footer-section ">
         <h3>ABOUT US</h3>
         <p>
         
@@ -25,7 +25,7 @@ const Footer = () => {
           <li>Conference Alerts</li></a>
         </ul>
       </div>
-      <div className="footer-section">
+      <div className="footer-section ">
         <h3>QUICK LINKS</h3>
         <ul>
           <a href='/'>
