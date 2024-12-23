@@ -1,32 +1,58 @@
-import React from 'react';
-import FeatureEvents from './featureEvents';
-import FeaturedOrganizer from './featuredOrganizer';
-import BrowseByCity from '../AddEvent/BrowseByCities';
-import BrowseByCountry from '../AddEvent/BrowseByCountry';
-import BrowseByTopics from '../AddEvent/BrowseByTopic';
-import './Home.css';
+import React, { useState } from "react";
+import FeatureEvents from "./featureEvents";
+import FeaturedOrganizer from "./featuredOrganizer";
+import BrowseByCity from "../AddEvent/BrowseByCities";
+import BrowseByCountry from "../AddEvent/BrowseByCountry";
+import BrowseByTopics from "../AddEvent/BrowseByTopic";
+import "./Home.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Home = () => {
+  const [query, setQuery] = useState("");
+  const [location, setLocation] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    toast.success("Successfully", { position: "top-center" });
+    navigate(
+      `/events/search?query=${query}&location=${location}&dateFilter=${dateFilter}`
+    );
+  };
+
   return (
     <div className="max-w-[1440px] mx-auto">
       {/* Search Section */}
       <div className="header-container">
         <h1>Find Your Next Conference</h1>
-        <form className="search-form">
+        <form className="search-form" onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Search events or categories"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
             className="input-field"
           />
           <input
             type="text"
             placeholder="City or location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className="input-field"
           />
-          <select className="dropdown">
+          <select
+            className="dropdown"
+            value={dateFilter}
+            onChange={(e) => setDateFilter(e.target.value)}
+          >
             <option value="all-dates">All Dates</option>
-            <option value="2025-01">January 2025</option>
-            <option value="2025-02">February 2025</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="this-week">This Week</option>
+            <option value="this-weekend">This Weekend</option>
+            <option value="next-week">Next Week</option>
           </select>
           <button type="submit" className="search-button">
             Search
@@ -39,11 +65,13 @@ const Home = () => {
         <h2>Welcome To Academic World Research 2025</h2>
         <div className="line-divider"></div>
         <p>
-          Academic World Research (AWR) will be the game changer of your life because it is going to give
-          you the latest updates on all the International Conference Alerts 2025. Be ready to get a wealth
-          of information on upcoming conferences in 2025, including deadlines, topics, strategies to choose
-          reputed journals, submission guidelines, and complete support with regard to paper publications.
-          Stay ahead of your competitors with AWR and elevate your academic journey.
+          Academic World Research (AWR) will be the game changer of your life
+          because it is going to give you the latest updates on all the
+          International Conference Alerts 2025. Be ready to get a wealth of
+          information on upcoming conferences in 2025, including deadlines,
+          topics, strategies to choose reputed journals, submission guidelines,
+          and complete support with regard to paper publications. Stay ahead of
+          your competitors with AWR and elevate your academic journey.
         </p>
       </div>
 
@@ -56,21 +84,27 @@ const Home = () => {
             <h2>About Us</h2>
             <div className="line-divider"></div>
             <p>
-              Academic World Research is world's most reliable index of academic activities like international
-              conferences and professional events. If you are looking for a perfect platform to learn and share,
-              AWR is the best gateway to reserve your slot at conferences of your need. Certifying the conferences
-              with verification and their authenticity makes us a trusted partner of academicians and professionals
-              to help them to get notified about upcoming conferences scheduled worldwide.
+              Academic World Research is world's most reliable index of academic
+              activities like international conferences and professional events.
+              If you are looking for a perfect platform to learn and share, AWR
+              is the best gateway to reserve your slot at conferences of your
+              need. Certifying the conferences with verification and their
+              authenticity makes us a trusted partner of academicians and
+              professionals to help them to get notified about upcoming
+              conferences scheduled worldwide.
             </p>
             <p>
-              International conferences on science, engineering, management, health, and allied areas at Academic
-              World Research are the centers for academic and business interaction, which makes us a flag bearer
-              in the global market of professional event promotion. Detailed review, assessment, and user-friendly
-              accessibility make us the trailblazer of academic conferences worldwide.
+              International conferences on science, engineering, management,
+              health, and allied areas at Academic World Research are the
+              centers for academic and business interaction, which makes us a
+              flag bearer in the global market of professional event promotion.
+              Detailed review, assessment, and user-friendly accessibility make
+              us the trailblazer of academic conferences worldwide.
             </p>
             <p>
-              Academic World Research is a pinboard to find and bookmark international conferences of your need
-              that suit your academic and professional requirements.
+              Academic World Research is a pinboard to find and bookmark
+              international conferences of your need that suit your academic and
+              professional requirements.
             </p>
           </div>
           <FeaturedOrganizer />
