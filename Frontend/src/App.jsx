@@ -10,6 +10,8 @@ import ContactUs from "./Components/Pages/ContactUs/ContactUs";
 import Blog from "./Components/Pages/Blog/Blog";
 
 import Home from "./Components/Pages/Home/Home";
+import Faq from "./Components/Pages/Faq/Faq";
+import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 function App() {
   return (
     <BrowserRouter>
@@ -18,11 +20,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/journals" element={<Journals />} />
         <Route path="/submit" element={<Submitpaper />} />
-        <Route path="/add-event" element={<AddEvent />} />
+        <Route path="/addevents" element={<AddEvent />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/ContactUs" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
     </BrowserRouter>
