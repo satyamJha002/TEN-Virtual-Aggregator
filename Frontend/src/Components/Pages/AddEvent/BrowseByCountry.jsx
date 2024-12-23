@@ -40,13 +40,13 @@ const countries = {
     "Greece",
     "Ireland",
     "Italy",
-    "Netherlands",
+    "Nether lands",
     "Norway",
     "Poland",
     "Russia",
     "Spain",
     "Sweden",
-    "Switzerland",
+    "Switzer land",
     "Turkey",
     "UK",
     "Ukraine",
@@ -87,7 +87,7 @@ function BrowseByCountry() {
         {allCountries.map((country) => (
           <button
             key={country}
-            className="bg-white text-gray-800 font-medium py-2 px-4 rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="bg-white text-gray-800 font-medium py-2  rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
             aria-label={`Browse ${country}`}
           >
             {country}
