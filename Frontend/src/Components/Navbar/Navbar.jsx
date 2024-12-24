@@ -120,7 +120,7 @@ const Navbar = () => {
               isActive ? activeStyle : inactiveStyle
             }
           >
-            <span className="hover:text-gray-400">{item.label}</span>
+            <span className="">{item.label}</span>
           </NavLink>
            
            
