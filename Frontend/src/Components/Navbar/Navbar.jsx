@@ -7,9 +7,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { id: 1, label: "Scientific Events", path: "/scientific-events" },
+    { id: 1, label: "Scientific Events", path: "/Scientificevents" },
     { id: 2, label: "Journals", path: "/journals" },
-    { id: 3, label: "Add Events", path: "/add-events" },
+    { id: 3, label: "Add Events", path: "/addevents" },
   ];
 
   const handleNavigation = (path) => {
