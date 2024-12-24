@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Journals from "./Components/Pages/Journals/Journals";
 import Submitpaper from "./Components/Pages/Journals/Submitpaper";
-import VirtualNavbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import Events from "./Components/Pages/Events/Events";
 import AddEvent from "./Components/Pages/AddEvent/AddEvent";
 import ContactUs from "./Components/Pages/ContactUs/ContactUs";
@@ -25,7 +25,7 @@ function App() {
   const isAdminRoute = location.pathname === "/admin";
   return (
     <>
-      {!isAdminRoute && <VirtualNavbar />}
+      {!isAdminRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events/search" element={<FilterPage />} />
@@ -34,7 +34,7 @@ function App() {
         <Route path="/addevents" element={<AddEvent />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/ContactUs" element={<ContactUs />} />
+        <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />

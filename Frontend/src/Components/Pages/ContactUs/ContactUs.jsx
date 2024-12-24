@@ -148,7 +148,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-page">
+    <div className="contact-page max-w-6xl mx-auto">
       {!isDesktop && (
         <>
           <h3 className="text-2xl font-semibold relative inline-block mb-2">

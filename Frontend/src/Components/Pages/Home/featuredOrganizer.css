@@ -1,9 +1,9 @@
 /* Base styles for smallest screens first */
 .featured-organizer-container {
-    padding: 1rem 0.5rem;
+    /* padding: 1rem 0.5rem; */
     width: 100%;
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0 ;
     overflow: hidden;
   }
   
@@ -60,9 +60,9 @@
   
   /* Small Mobile Devices (320px and up) */
   @media screen and (min-width: 320px) {
-    .featured-organizer-container {
+    /* .featured-organizer-container {
       padding: 1.25rem 0.75rem;
-    }
+    } */
     
     .organizer-card {
       max-width: 160px;
@@ -79,9 +79,9 @@
   
   /* Large Mobile Devices (425px and up) */
   @media screen and (min-width: 425px) {
-    .featured-organizer-container {
+    /* .featured-organizer-container {
       padding: 1.5rem 1rem;
-    }
+    } */
     
     .organizer-card {
       padding: 1rem;
@@ -92,7 +92,7 @@
   /* Tablets (768px and up) */
   @media screen and (min-width: 768px) {
     .featured-organizer-container {
-      padding: 2rem;
+      /* padding: 2rem; */
       max-width: 90%;
     }
   
@@ -118,7 +118,7 @@
   /* Small Laptops (1024px and up) */
   @media screen and (min-width: 1024px) {
     .featured-organizer-container {
-      max-width: 85%;
+      max-width: 90%;
     }
   
     .organizer-grid {
@@ -135,7 +135,7 @@
   @media screen and (min-width: 1280px) {
     .featured-organizer-container {
       max-width: 1200px;
-      padding: 2.5rem 2rem;
+      /* padding: 2.5rem 2rem; */
     }
   
     .organizer-grid {
