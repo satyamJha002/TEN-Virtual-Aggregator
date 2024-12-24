@@ -1,7 +1,10 @@
 export default function Admin() {
   return (
     <>
-      <nav className="fixed top-0 z-50 w-full bg-white border-b" style={{backgroundColor: '#80011f'}}>
+      <nav
+        className="fixed top-0 z-50 w-full bg-white border-b"
+        style={{ backgroundColor: "#80011f" }}
+      >
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
@@ -37,20 +40,14 @@ export default function Admin() {
               <div className="flex items-center ms-3">
                 <div
                   className="z-50 hidden my-4 text-base list-none bg-white divide-y rounded shadow"
-                  style={{backgroundColor: "#80011f"}}
+                  style={{ backgroundColor: "#80011f" }}
                   id="dropdown-user"
                 >
                   <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm  dark:text-white"
-                      role="none"
-                    >
+                    <p className="text-sm  dark:text-white" role="none">
                       Neil Sims
                     </p>
-                    <p
-                      className="text-sm font-medium truncate "
-                      role="none"
-                    >
+                    <p className="text-sm font-medium truncate " role="none">
                       neil.sims@flowbite.com
                     </p>
                   </div>
@@ -102,7 +99,7 @@ export default function Admin() {
       <aside
         id="logo-sidebar"
         className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full border-r  sm:translate-x-0"
-        style={{backgroundColor: "#80011f"}}
+        style={{ backgroundColor: "#80011f" }}
         aria-label="Sidebar"
       >
         <div className="h-full px-3 pb-4 overflow-y-auto">
@@ -189,7 +186,7 @@ export default function Admin() {
         </div>
       </aside>
 
-      <div className="p-4 sm:ml-64" style={{display: "none"}} >
+      <div className="p-4 sm:ml-64" style={{ display: "none" }}>
         <div className="p-4 border-2  border-dashed rounded-lg mt-14">
           <div className="grid grid-cols-3 gap-4 mb-4">
             <div className="flex items-center justify-center h-24 rounded ">
