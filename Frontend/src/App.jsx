@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,10 +15,17 @@ import Home from "./Components/Pages/Home/Home";
 import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
 import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
+import Admin from "./Components/Admin/Admin";
+
+
 function App() {
+  const location = useLocation();
+
+  // Check if the current route is '/admin'
+  const isAdminRoute = location.pathname === "/admin";
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      {!isAdminRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events/search" element={<FilterPage />} />
@@ -31,11 +38,20 @@ function App() {
         <Route path="/Scientificevents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/admin" element={<Admin/>} />
       </Routes>
-      <Footer />
+      {!isAdminRoute && <Footer />}
       <ToastContainer />
+    </>
+  );
+}
+
+function AppWrapper() {
+  return (
+    <BrowserRouter>
+      <App />
     </BrowserRouter>
   );
 }
 
-export default App;
+export default AppWrapper;

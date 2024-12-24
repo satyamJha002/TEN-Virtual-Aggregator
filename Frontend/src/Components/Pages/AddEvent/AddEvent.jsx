@@ -26,7 +26,7 @@ function AddEvent() {
   }, []);
 
   return (
-    <div className="p-6 max-w-5xl mx-auto bg-white rounded-md flex flex-col items-start relative">
+    <div className="p-6 max-w-6xl mx-auto bg-white rounded-md flex flex-col items-start relative">
       {/* Filter Buttons - Mobile */}
       {!isDesktop && (
         <div className="w-full flex flex-col items-start mb-4 md:hidden">

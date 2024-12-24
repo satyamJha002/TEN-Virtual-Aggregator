@@ -26,7 +26,7 @@ const Navbar = () => {
   const inactiveStyle = "text-[#fff]";
 
   return (
-    <nav className="flex justify-between items-center px-6 py-4 bg-[#80011f] text-white relative z-50 navbar">
+    <nav className="flex justify-around items-center px-6 py-4 bg-[#80011f] text-white relative z-50 navbar">
       <div className="flex items-center">
       <svg
           preserveAspectRatio="xMidYMid meet"
@@ -104,55 +104,39 @@ const Navbar = () => {
               isActive ? activeStyle : inactiveStyle
             }
           >
-            Home
+            HOME
           </NavLink>
         </li>
-        {menuItems.map((item) => (
-          <li
-            key={item.id}
-            className="relative flex items-center cursor-pointer"
-            onMouseEnter={() => setHoveredItem(item.id)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
+        <li>
           <NavLink
-            to={item.path}
+            to="/ScientificEvents"
             className={({ isActive }) =>
               isActive ? activeStyle : inactiveStyle
             }
           >
-            <span className="">{item.label}</span>
+            <span >{item.label}</span>
           </NavLink>
-           
-           
-            {hoveredItem === item.id && (
-              <div
-                className={`flex flex-col absolute top-full bg-white text-black p-4 rounded shadow-lg gap-4 mt-0`}
-                style={{
-                  zIndex: 1000,
-                  ...(item.label === "  Add Events" &&
-                  window.innerWidth >= 1024
-                    ? { left: "50%", transform: "translateX(-50%)" }
-                    : { right: 0 }),
-                }}
-              >
-                <button
-                  onClick={() => handleNavigation(`${item.path}/india`)}
-                  className="p-2 bg-gray-100 hover:bg-[#80011f] hover:text-white rounded w-28"
-                >
-                  
-                India  
-                </button>
-                <button
-                  onClick={() => handleNavigation(`${item.path}/international`)}
-                  className="p-2 bg-gray-100 hover:bg-[#80011f] hover:text-white rounded w-28"
-                >
-                
-                  International
-                </button>
-              </div>
-            )}
-          </li>
-        ))}
+        </li>
+        <li>
+          <NavLink
+            to="/journals"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            JOURNAL
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/AddEvents"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            ADD EVENT
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="/contact-us"
@@ -160,7 +144,17 @@ const Navbar = () => {
               isActive ? activeStyle : inactiveStyle
             }
           >
-            Contact
+            CONTACT US
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            BLOG
           </NavLink>
         </li>
       </ul>
@@ -176,67 +170,65 @@ const Navbar = () => {
         <ul className="lg:hidden absolute top-full left-0 w-full bg-[#80011f] text-white flex flex-col space-y-4 p-4">
           <li>
             <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? activeStyle : inactiveStyle
-              }
-            >
-              Home
-            </NavLink>
-          </li>
-          {menuItems.map((item) => (
-            <li
-              key={item.id}
-              className="relative"
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              <div className="flex items-center cursor-pointer">
-              <NavLink
-            to={item.path}
+            to="/"
             className={({ isActive }) =>
               isActive ? activeStyle : inactiveStyle
             }
           >
-            <span className="">{item.label}</span>
+            HOME
           </NavLink>
-           
-                
-              </div>
-              {hoveredItem === item.id && (
-                <div
-                  className="flex flex-col gap-2 mt-2 z-20"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    onClick={() => handleNavigation(`${item.path}/india`)}
-                    className="p-2 bg-gray-100 hover:bg-[#80011f] hover:text-white rounded text-[#000]"
-                  >
-                    
-                    India
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleNavigation(`${item.path}/international`)
-                    }
-                    className="p-2 bg-gray-100 hover:bg-[#80011f] hover:text-white rounded text-[#000]"
-                  >
-                    International
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-          <li>
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) =>
-                isActive ? activeStyle : inactiveStyle
-              }
-            >
-              Contact
-            </NavLink>
-          </li>
+        </li>
+        <li>
+          <NavLink
+            to="/ScientificEvents"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            SCIENTIFIC EVENTS
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/journals"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            JOURNAL
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/AddEvents"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            ADD EVENT
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/contact-us"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            CONTACT US
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/blog"
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            BLOG
+          </NavLink>
+        </li>
+          
         </ul>
       )}
     </nav>
