@@ -7,9 +7,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { id: 1, label: "Scientific Events", path: "/scientific-events" },
+    { id: 1, label: "Scientific Events", path: "/Scientificevents" },
     { id: 2, label: "Journals", path: "/journals" },
-    { id: 3, label: "Add Events", path: "/add-events" },
+    { id: 3, label: "Add Events", path: "/addevents" },
   ];
 
   const handleNavigation = (path) => {
@@ -114,7 +114,15 @@ const Navbar = () => {
             onMouseEnter={() => setHoveredItem(item.id)}
             onMouseLeave={() => setHoveredItem(null)}
           >
+          <NavLink
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
             <span className="hover:text-gray-400">{item.label}</span>
+          </NavLink>
+           
            
             {hoveredItem === item.id && (
               <div
@@ -184,7 +192,15 @@ const Navbar = () => {
               onMouseLeave={() => setHoveredItem(null)}
             >
               <div className="flex items-center cursor-pointer">
-                <span>{item.label}</span>
+              <NavLink
+            to={item.path}
+            className={({ isActive }) =>
+              isActive ? activeStyle : inactiveStyle
+            }
+          >
+            <span className="">{item.label}</span>
+          </NavLink>
+           
                 
               </div>
               {hoveredItem === item.id && (
