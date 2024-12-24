@@ -1,6 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Journals from "./Components/Pages/Journals/Journals";
 import Submitpaper from "./Components/Pages/Journals/Submitpaper";
 import Navbar from "./Components/Navbar/Navbar";
@@ -10,21 +12,28 @@ import ContactUs from "./Components/Pages/ContactUs/ContactUs";
 import Blog from "./Components/Pages/Blog/Blog";
 
 import Home from "./Components/Pages/Home/Home";
+import FilterPage from "./Components/Pages/FilterPage/FilterPage";
+import Faq from "./Components/Pages/Faq/Faq";
+import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/events/search" element={<FilterPage />} />
         <Route path="/journals" element={<Journals />} />
         <Route path="/submit" element={<Submitpaper />} />
-        <Route path="/add-event" element={<AddEvent />} />
+        <Route path="/addevents" element={<AddEvent />} />
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </BrowserRouter>
   );
 }

@@ -64,7 +64,7 @@
 .welcome-section {
   text-align: left;
   margin-top: 30px;
-  padding: 20px;
+  padding: 8px;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -72,8 +72,9 @@
 
 .welcome-section h2 {
   font-size: 24px;
-  color: #333;
+  color: #333333;
   margin-bottom: 10px;
+  font: bold;
 }
 
 .line-divider {
@@ -94,7 +95,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 @media (min-width: 1024px) {

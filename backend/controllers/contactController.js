@@ -9,6 +9,14 @@ export const contactDetails = async (req, res) => {
       return res.status(400).json({ message: "All the details are required." });
     }
 
+    const existingContact = await Contact.findOne({ email });
+    if (existingContact) {
+      return res.status(409).json({
+        message:
+          "A contact with this email already exists. Please use a different email.",
+      });
+    }
+
     const newContact = new Contact({
       fullName,
       email,

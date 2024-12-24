@@ -22,7 +22,7 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const activeStyle = "text-gray-400 font-semibold";
+  const activeStyle = "text-white font-bold";;
   const inactiveStyle = "text-[#fff]";
 
   return (
