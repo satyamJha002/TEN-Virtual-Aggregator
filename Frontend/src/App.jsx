@@ -34,7 +34,7 @@ function App() {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/Contact-us" element={<ContactUs />} />
-        <Route path="/ScientificEvents" element={<Events />} />
+        <Route path="/Scientificevents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
         {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
         <Route path="/admin" element={<Admin />} />
