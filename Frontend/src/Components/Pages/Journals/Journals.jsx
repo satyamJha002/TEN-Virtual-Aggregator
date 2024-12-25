@@ -3,13 +3,15 @@ import "./journal.css"
 
 function Journals() {
     return (
-        <section>
-            <div className="Journals">
-                <h1> Top Journals with Impact Factors </h1>
-                <button className="tablinks" >ACTIVE QUALITY JOURNALS</button>
+        <div style={{height: "100%"}}>
+            <div className="Journals px-16">
+            <h1 className="border-red border-gray">Top Journals with Impact Factors</h1>
+                <button className="tablinks" >Active Quality Journal</button>
                 <h3>SCOPUS INDEXED JOURNALS</h3>
             </div>
-            <div className="cards">
+            <div className="mx-auto" style={{padding: "2rem"}}>
+            <div className="cards grid xs:grid-col-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 p-1 m-4" > 
+                {/* flex flex-wrap justify-start gap-8 */}
                 <Card title="Scopus Q1 / Scimago Q2" ISSN="empty" />
                 <Card title="South Eastern European Journal of Public Health" ISSN="2197-5248" />
                 <Card title="Nanotechnology Perceptions" ISSN="1660-6795" />
@@ -52,7 +54,8 @@ function Journals() {
                 <Card title="Advances in Pharmacology and Pharmacy" ISSN="2332-0036 (Print); 2332-0044 (Online)" />
                 <Card title="Eurasian Chemical Communications" ISSN="2676-6280" />
             </div>
-        </section>
+            </div>
+        </div>
     )
 }
 

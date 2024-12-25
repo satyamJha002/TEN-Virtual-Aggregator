@@ -6,6 +6,7 @@ import { connectToDb } from "./config/db.js";
 import submissionRoutes from "./routes/submission.js";
 import contactRoute from "./routes/contactRoute.js";
 import eventRoute from "./routes/addEventRoute.js";
+import sciEventsRoute from "./routes/sciEventsRoute.js";
 
 dotenv.config();
 const app = express();
@@ -28,3 +29,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+app.use("/api", sciEventsRoute);

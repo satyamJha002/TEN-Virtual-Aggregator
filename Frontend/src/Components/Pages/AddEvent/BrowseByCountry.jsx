@@ -67,7 +67,7 @@ function BrowseByCountry() {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md">
+    <div className="p-4 bg-gray-100 mb-6" style={{ borderRadius: "4px" }}>
       {/* Header - Hidden in Mobile */}
       <h2
         className="text-2xl font-semibold cursor-pointer items-center justify-between md:block hidden"
@@ -89,6 +89,7 @@ function BrowseByCountry() {
             key={country}
             className="bg-white text-gray-800 font-medium py-2 px-4 rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
             aria-label={`Browse ${country}`}
+            style={{ fontSize: "0.8rem" }}
           >
             {country}
           </button>

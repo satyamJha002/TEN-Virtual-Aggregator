@@ -4,23 +4,63 @@ import "./ContactUs.css";
 import BrowseByCity from "../AddEvent/BrowseByCities";
 import BrowseByCountry from "../AddEvent/BrowseByCountry";
 import BrowseByTopics from "../AddEvent/BrowseByTopic";
+import useFetch from "../../../customAPI/useFetch";
+import { toast } from "react-toastify";
 
-const ContactForm = () => (
-  <form className="contact-form-container">
+const ContactForm = ({
+  handleSubmmit,
+  handleChange,
+  fullName,
+  email,
+  phoneNumber,
+  queriesTitle,
+  message,
+}) => (
+  <form className="contact-form-container" onSubmit={handleSubmmit}>
     <div className="form-row">
-      <input type="text" placeholder="Full Name*" className="input-field" />
-      <input type="email" placeholder="Email*" className="input-field" />
-    </div>
-    <div className="form-row">
-      <input type="text" placeholder="Your Phone*" className="input-field" />
       <input
         type="text"
-        placeholder="Title of your Page*"
-        className="input-field"
+        placeholder="Full Name*"
+        name="fullName"
+        value={fullName}
+        onChange={handleChange}
+        className="contact-input-field"
+      />
+      <input
+        type="email"
+        placeholder="Email*"
+        name="email"
+        value={email}
+        onChange={handleChange}
+        className="contact-input-field"
       />
     </div>
     <div className="form-row">
-      <textarea placeholder="Message*" className="textarea-field"></textarea>
+      <input
+        type="text"
+        placeholder="Your Phone*"
+        name="phoneNumber"
+        value={phoneNumber}
+        onChange={handleChange}
+        className="contact-input-field"
+      />
+      <input
+        type="text"
+        placeholder="Title of your Page*"
+        name="queriesTitle"
+        value={queriesTitle}
+        onChange={handleChange}
+        className="contact-input-field"
+      />
+    </div>
+    <div className="form-row">
+      <textarea
+        placeholder="Message*"
+        className="textarea-field"
+        name="message"
+        value={message}
+        onChange={handleChange}
+      ></textarea>
     </div>
     <div className="captcha-container">
       <input type="checkbox" id="captcha" />
@@ -35,8 +75,64 @@ const ContactForm = () => (
 );
 
 const ContactUs = () => {
-  const [view, setView] = useState(""); // State to control visible section
+  const [formData, setFormaData] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    queriesTitle: "",
+    message: "",
+  });
+  const [view, setView] = useState("");
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  const { fullName, email, phoneNumber, queriesTitle, message } = formData;
+
+  const handleChange = (e) => {
+    setFormaData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const { fetchData, loading, error } = useFetch(
+    "http://localhost:3000/api/contact",
+    "POST"
+  );
+
+  const handleSubmmit = async (e) => {
+    e.preventDefault();
+
+    if (!fullName || !email || !phoneNumber || !queriesTitle || !message) {
+      toast.info("Please fill in all the required fields");
+      return;
+    }
+
+    const payload = {
+      fullName,
+      email,
+      phoneNumber,
+      queriesTitle,
+      message,
+    };
+
+    try {
+      const response = await fetchData(payload);
+      if (response.success) {
+        toast.success("Your message has been sent successfully");
+        setFormaData({
+          fullName: "",
+          email: "",
+          phoneNumber: "",
+          queriesTitle: "",
+          message: "",
+        });
+      } else {
+        toast.error(response.error || "An unexpected error occurred");
+      }
+    } catch (error) {
+      toast.error(
+        "An error occurred while sending your message. Please try again."
+      );
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
@@ -52,7 +148,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contact-page">
+    <div className="contact-page max-w-6xl mx-auto">
       {!isDesktop && (
         <>
           <h3 className="text-2xl font-semibold relative inline-block mb-2">
@@ -102,7 +198,19 @@ const ContactUs = () => {
       <div className="contact-form">
         <h2>Contact Us</h2>
         <p>Please get in touch for comments or requests.</p>
-        <ContactForm />
+        {loading && <div>Loading...</div>}
+        {error && <div className="text-red-700">Error: {error}</div>}
+        {!loading && !error && (
+          <ContactForm
+            handleSubmmit={handleSubmmit}
+            handleChange={handleChange}
+            fullName={fullName}
+            email={email}
+            phoneNumber={phoneNumber}
+            queriesTitle={queriesTitle}
+            message={message}
+          />
+        )}
         <div className="contact-info">
           <p>Contact Us:</p>
           <p>+91-8925031783</p>

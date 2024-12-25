@@ -26,12 +26,12 @@ function AddEvent() {
   }, []);
 
   return (
-    <div className="p-6 max-w-5xl mx-auto bg-white rounded-md flex flex-col items-start relative">
+    <div className="p-6 max-w-6xl mx-auto bg-white rounded-md flex flex-col items-start relative">
       {/* Filter Buttons - Mobile */}
       {!isDesktop && (
         <div className="w-full flex flex-col items-start mb-4 md:hidden">
           {/* Header */}
-          <h3 className="text-2xl font-semibold relative inline-block mb-2">
+          <h3 className="m-w-xl mx-auto font-bold text-xl">
             Browse By
             <span className="block h-1 w-20 bg-red-800 absolute bottom-0 left-0"></span>
           </h3>
@@ -88,11 +88,9 @@ function AddEvent() {
       <div className="w-full flex flex-col md:flex-row items-start">
         {/* Left Section: Add Events */}
         <div className="flex-1 w-full">
-          <h3 className="text-2xl font-semibold relative inline-block mb-2">
+          <h3 className="text-2xl font-semibold relative mb-8 border-red border-gray">
             Add Events
-            <span className="block h-1 w-20 bg-red-800 absolute bottom-0 left-0"></span>
           </h3>
-          <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
 
           <div className="p-6 bg-white shadow-md rounded-md">
             <Form />
@@ -102,17 +100,8 @@ function AddEvent() {
         {/* Right Section: Desktop */}
         {isDesktop && (
           <div className="hidden md:block w-full md:w-96 md:ml-6">
-            <h3 className="text-2xl font-semibold relative inline-block mb-2">
-              Browse By City
-              <span className="block h-1 w-20 bg-red-800 absolute bottom-0 left-0"></span>
-            </h3>
-            <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
             <BrowseByCity />
-
-            <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
             <BrowseByCountry />
-
-            <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
             <BrowseByTopics />
           </div>
         )}

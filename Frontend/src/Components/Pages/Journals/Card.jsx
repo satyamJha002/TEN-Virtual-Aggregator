@@ -4,7 +4,8 @@ const Card = ({ title, ISSN }) => {
     <div className='card'>
       <div className='row'>
         <div className='topofrow'>
-          <h5>{title}</h5>
+          <h5 className="text-center">{title}</h5>
+          <div className="p-2 text-center">
           <p>
             <strong>ISSN :</strong>
             {ISSN}
@@ -12,9 +13,10 @@ const Card = ({ title, ISSN }) => {
           <p>
             <strong>Indexed In :</strong> High Impact Indexing Database
           </p>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="text-center mb-4">
         <Link
           to='/submit'
           state={{ title }} // Passing the title via state
