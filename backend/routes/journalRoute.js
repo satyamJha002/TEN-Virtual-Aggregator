@@ -10,6 +10,6 @@ const router = express.Router();
 router.post("/newjournal", postJournal);
 router.get("/alljournals", getJournals);
 router.put("/updatejournal/:id", updateJournals);
-router.delete("/deletejournal/:id", deleteJournal);
+router.delete("/deletejournal", deleteJournal);
 
 export default router;

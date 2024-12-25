@@ -37,41 +37,38 @@ const FilterPage = () => {
   }
 
   return (
-    <div className="filter-events-container" >
-      
+    <div className="filter-events-container">
       <div className="filter-main-content">
         <div className="filter-left-column">
-      <div className="header_filter">
-       <h1>Your Searched Conference Here</h1>
-       </div>
-     <div className="flex-1">
-       <div className="filter_events-table">
-        
-        <div className="filter_table-header">
-            <div className="filter_date-col">DATE</div>
-            <div className="filter_name-col">Conference Name</div>
-            <div className="filter_venue-col">VENUE</div>
+          <div className="header_filter">
+            <h1>Your Searched Conference Here</h1>
           </div>
-          {data?.map((event) => (
-            <div className="filter_table_row" key={event._id}>
-              <div className="filter_date-col">{new Date(event.startDate).toLocaleDateString()}</div>
-              <div className="filter_name-col">{event.eventName}</div>
-              <div className="filter_venue-col">{event.city}</div>
+          <div className="flex-1">
+            <div className="filter_events-table">
+              <div className="filter_table-header">
+                <div className="filter_date-col">DATE</div>
+                <div className="filter_name-col">Conference Name</div>
+                <div className="filter_venue-col">VENUE</div>
+              </div>
+              {data?.data?.map((event) => (
+                <div className="filter_table_row" key={event._id}>
+                  <div className="filter_date-col">
+                    {new Date(event.startDate).toLocaleDateString()}
+                  </div>
+                  <div className="filter_name-col">{event.eventName}</div>
+                  <div className="filter_venue-col">{event.city}</div>
+                </div>
+              ))}
             </div>
-
-          ))}
-        </div>
-        </div>
+          </div>
         </div>
         <div className="filter-right-column">
-          <BrowseByCity/>
-          <BrowseByCountry/>
-          <BrowseByTopics/>
+          <BrowseByCity />
+          <BrowseByCountry />
+          <BrowseByTopics />
         </div>
-        </div>
-        </div>
-      
-    
+      </div>
+    </div>
   );
 };
 

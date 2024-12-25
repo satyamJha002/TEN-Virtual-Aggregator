@@ -12,7 +12,7 @@ export const postJournal = async (req, res) => {
 
     if (existingJournal) {
       return res.status({
-        message: "Journal is already existed with the same Id",
+        message: "Journal is already existed with the same title",
       });
     }
 
@@ -42,7 +42,11 @@ export const updateJournals = async (req, res) => {
     const { id } = req.params;
     const { title } = req.body;
 
-    const updateJournal = await Journal.findByIdAndUpdate(id, { title });
+    const updateJournal = await Journal.findByIdAndUpdate(
+      id,
+      { title },
+      { new: true }
+    );
 
     if (!updateJournal) {
       return res.status(404).json({ message: "Journal not found" });
@@ -59,9 +63,13 @@ export const updateJournals = async (req, res) => {
 
 export const deleteJournal = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { ISSN } = req.query;
 
-    const deleteJournal = await Journal.findByIdAndDelete(id);
+    if (!ISSN) {
+      return res.status(400).json({ message: "ISSN is required" });
+    }
+
+    const deleteJournal = await Journal.findOneAndDelete({ ISSN });
 
     if (!deleteJournal) {
       return res.status(404).json({ message: "Journal not found" });

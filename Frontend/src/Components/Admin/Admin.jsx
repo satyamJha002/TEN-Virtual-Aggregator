@@ -1,4 +1,20 @@
+import React, { useState } from "react";
+import AdminEvents from "./AdminEvents";
+import AdminJournal from "./AdminJournal/AdminJournal";
+
 export default function Admin() {
+  const [currentPage, setCurrentPage] = useState("events");
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "events":
+        return <AdminEvents />;
+      case "journals":
+        return <AdminJournal />;
+      default:
+        return <AdminEvents />;
+    }
+  };
   return (
     <>
       <nav
@@ -36,62 +52,6 @@ export default function Admin() {
                 </span>
               </a>
             </div>
-            {/* <div className="flex items-center">
-              <div className="flex items-center ms-3">
-                <div
-                  className="z-50 hidden my-4 text-base list-none bg-white divide-y rounded shadow"
-                  style={{ backgroundColor: "#80011f" }}
-                  id="dropdown-user"
-                >
-                  <div className="px-4 py-3" role="none">
-                    <p className="text-sm  dark:text-white" role="none">
-                      Neil Sims
-                    </p>
-                    <p className="text-sm font-medium truncate " role="none">
-                      neil.sims@flowbite.com
-                    </p>
-                  </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm  dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm   "
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm   "
-                        role="menuitem"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm   "
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </nav>
@@ -105,9 +65,9 @@ export default function Admin() {
         <div className="h-full px-3 pb-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 rounded-lg dark:text-white group"
+              <button
+                onClick={() => setCurrentPage("events")}
+                className="flex items-center w-full p-2 rounded-lg dark:text-white group hover:bg-white/10"
               >
                 <svg
                   className="w-5 h-5 transition duration-75 dark:group-hover:text-white"
@@ -120,12 +80,13 @@ export default function Admin() {
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 <span className="ms-3">Scientific Events</span>
-              </a>
+              </button>
             </li>
             <li>
-              <a
+              <button
+                onClick={() => setCurrentPage("journals")}
                 href="#"
-                className="flex items-center p-2 rounded-lg dark:text-white group"
+                className="flex items-center p-2 rounded-lg dark:text-white group hover:bg-white/10"
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 transition duration-75"
@@ -137,7 +98,7 @@ export default function Admin() {
                   <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
                 </svg>
                 <span className="flex-1 ms-3 whitespace-nowrap">Journals</span>
-              </a>
+              </button>
             </li>
             <li>
               <a
@@ -185,6 +146,10 @@ export default function Admin() {
           </ul>
         </div>
       </aside>
+
+      <div className="p-4 sm:ml-64">
+        <div className="mt-14">{renderPage()}</div>
+      </div>
     </>
   );
 }
