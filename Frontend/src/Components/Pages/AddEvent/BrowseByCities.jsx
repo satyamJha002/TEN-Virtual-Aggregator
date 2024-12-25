@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const cities = [
   "Bangalore",
@@ -22,10 +22,27 @@ const cities = [
 ];
 
 function BrowseByCity() {
+  const [isActive, setIsActive] = useState(false);
+  
+    // Flatten the list and exclude "India"
+    const allCities = Object.values(cities)
+      .flat()
+  
+    const toggleDropdown = () => {
+      setIsActive(!isActive);
+    };
+
   return (
-    <div className="bg-gray-100 p-8">
+    <div className="bg-gray-100 p-4 mb-8" style={{borderRadius: "4px"}}>
+      <h2
+        className="text-2xl font-semibold cursor-pointer border-red border-gray items-center mb-4 justify-between md:block hidden"
+        onClick={toggleDropdown}
+        aria-expanded={isActive}
+      >
+        Browse By City
+      </h2>
       {/* Responsive grid: 1 column for mobile and 2 columns for tablet and up */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {cities.map((city) => (
           <button
             key={city}
@@ -38,6 +55,8 @@ function BrowseByCity() {
             style={{
               maxWidth: "280px", // Set consistent width for the button
               position: "relative", // Required for the arrow styling
+              borderRadius: "4px",
+              fontSize: "0.8rem",
             }}
           >
             {city}

@@ -3,18 +3,20 @@
   flex-direction: column;
   padding: 20px;
   background-color: #fff;
+  gap: 1rem;
   font-family: Arial, sans-serif;
   position: relative; /* To allow .mobile-view to float within this container */
 }
 
 .contact-form {
   background-color: #fff;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 2rem;
   border-radius: 8px;
+  flex: 1;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative; /* Ensures .mobile-view can float above */
+  position: relative;
   z-index: 1;
+  height: 100%;
 }
 
 .contact-form h2 {
@@ -155,14 +157,6 @@
   .contact-page {
     flex-direction: row;
     justify-content: space-between;
-  }
-
-  .contact-form {
-    width: 48%;
-  }
-
-  .browse-section {
-    width: 48%;
   }
 
   .mobile-view {

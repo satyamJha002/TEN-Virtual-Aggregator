@@ -49,14 +49,14 @@ const FeaturedOrganizer = () => {
 
   return (
     <div className="featured-organizer-container">
-      <h2 className="featured-title">Featured Organizer</h2>
-      <div className="organizer-grid">
+      <h2 className="featured-title border-red border-gray">Featured Organizer</h2>
+      <div className="flex flex-wrap justify-evenly items-center">
         {organizers.map((organizer) => (
-          <div key={organizer.id} className="organizer-card">
+          <div key={organizer.id} >
             <img
               src={organizer.logo}
               alt={organizer.alt}
-              className="organizer-logo"
+              className="border m-6"
             />
           </div>
         ))}

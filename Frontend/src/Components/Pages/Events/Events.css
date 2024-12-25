@@ -15,6 +15,7 @@
   .calgary-header {
     background-color: #721c24;
     padding: 1rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
   }
   
@@ -29,12 +30,14 @@
     border: 1px solid #ddd;
     padding: 1.5rem;
     margin-bottom: 1rem;
+    border-radius: 4px;
     background-color: #f8f9fa;
   }
   
   .promo-box.conferences {
     background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
     background-size: cover;
+    border-radius: 4px;
     color: white;
   }
   
@@ -88,11 +91,9 @@
   }
   
   .header h1 {
-    color: #721c24;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #721c24;
   }
   
   /* Navigation Styles */

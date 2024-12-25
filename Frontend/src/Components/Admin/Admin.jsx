@@ -86,7 +86,7 @@ export default function Admin() {
               <button
                 onClick={() => setCurrentPage("journals")}
                 href="#"
-                className="flex items-center p-2 rounded-lg dark:text-white group hover:bg-white/10"
+                className="flex justify-start w-full items-center p-2 rounded-lg dark:text-white group hover:bg-white/10"
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 transition duration-75"
