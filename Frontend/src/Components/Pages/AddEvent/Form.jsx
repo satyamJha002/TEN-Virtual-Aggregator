@@ -363,7 +363,7 @@ function Form() {
             className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200"
           />
         </div>
-        <button class="bg-red-800 text-white text-xl font-bold py-4 px-6 rounded">
+        <button className="bg-red-800 text-white text-xl font-bold py-4 px-6 rounded">
           Submit
         </button>
       </form>

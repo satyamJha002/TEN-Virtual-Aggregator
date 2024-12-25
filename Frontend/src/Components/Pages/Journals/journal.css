@@ -5,29 +5,28 @@ section{
 
 .Journals h1{
     font-size: 2rem;
-    text-align: center;
     font-weight: 600;
     color: #6d0011;
     margin: 3rem 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .Journals h3{
     color: #d22f1e;
+    text-align: center;
     font-weight: bold;
     font-size: 1.3rem;
 }
 
 .tablinks{
     background-color: #80011f;
-    border: none;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    border-radius: 4px;
-    padding: 14px 16px;
+    border-radius: 15rem;
+    margin: 0.5rem 1rem;
+    color: white;
+    padding: 0.5rem 1rem;
     margin-bottom: 10px;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 0.8rem;
 }
 
 .card{

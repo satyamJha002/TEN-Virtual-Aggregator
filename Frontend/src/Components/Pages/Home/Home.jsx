@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto p-4">
       {/* Search Section */}
       <div className="header-container">
         <h1>Find Your Next Conference</h1>
@@ -62,8 +62,7 @@ const Home = () => {
 
       {/* Welcome Section */}
       <div className="welcome-section">
-        <h2>Welcome To Academic World Research 2025</h2>
-        <div className="line-divider"></div>
+        <h2 className="border-red border-gray">Welcome To Academic World Research 2025</h2>
         <p>
           Academic World Research (AWR) will be the game changer of your life
           because it is going to give you the latest updates on all the
@@ -85,8 +84,7 @@ const Home = () => {
 
           {/* About Us Section */}
           <div className="welcome-section">
-            <h2>About Us</h2>
-            <div className="line-divider"></div>
+            <h2 className="border-red border-gray">About Us</h2>
             <p>
               Academic World Research is world's most reliable index of academic
               activities like international conferences and professional events.

@@ -1,202 +1,135 @@
 /* Base styles for smallest screens first */
 .featured-organizer-container {
-    /* padding: 1rem 0.5rem; */
-    width: 100%;
-    max-width: 100%;
-    margin: 0 ;
-    overflow: hidden;
-  }
-  
-  .featured-title {
-    color: #333;
-    font-size: clamp(1.25rem, 4vw, 1.5rem);
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-bottom: 0.5rem;
-    text-align: left;
-    padding-left: 1rem;
-    margin-left: 18px;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .featured-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 1rem;
-    width: 80px;
-    height: 3px;
-    background-color: #8b0000;
-  }
-  
-  .organizer-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    justify-items: center;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .organizer-card {
-    background: white;
-    padding: 0.75rem;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-    width: 100%;
-    max-width: 150px;
-    min-height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .organizer-logo {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-height: 60px;
-  }
-  
-  /* Small Mobile Devices (320px and up) */
-  @media screen and (min-width: 320px) {
-    /* .featured-organizer-container {
+  /* padding: 1rem 0.5rem; */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.featured-title {
+  color: #333;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 600;
+  position: relative;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.organizer-card {
+  background: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  max-width: 150px;
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.organizer-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 60px;
+}
+
+/* Small Mobile Devices (320px and up) */
+@media screen and (min-width: 320px) {
+  /* .featured-organizer-container {
       padding: 1.25rem 0.75rem;
     } */
-    
-    .organizer-card {
-      max-width: 160px;
-    }
+
+  .organizer-card {
+    max-width: 160px;
   }
-  
-  /* Medium Mobile Devices (375px and up) */
-  @media screen and (min-width: 375px) {
-    .organizer-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-  }
-  
-  /* Large Mobile Devices (425px and up) */
-  @media screen and (min-width: 425px) {
-    /* .featured-organizer-container {
+}
+
+
+/* Large Mobile Devices (425px and up) */
+@media screen and (min-width: 425px) {
+  /* .featured-organizer-container {
       padding: 1.5rem 1rem;
     } */
-    
-    .organizer-card {
-      padding: 1rem;
-      max-width: 180px;
-    }
+
+  .organizer-card {
+    padding: 1rem;
+    max-width: 180px;
   }
-  
-  /* Tablets (768px and up) */
-  @media screen and (min-width: 768px) {
-    .featured-organizer-container {
-      /* padding: 2rem; */
-      max-width: 90%;
-    }
-  
-    .organizer-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-  
-    .featured-title::after {
-      width: 100px;
-    }
-  
-    .organizer-card {
-      max-width: 200px;
-      min-height: 100px;
-    }
-  
-    .organizer-logo {
-      max-height: 70px;
-    }
+}
+
+/* Tablets (768px and up) */
+@media screen and (min-width: 768px) {
+
+  .featured-title::after {
+    width: 100px;
   }
-  
-  /* Small Laptops (1024px and up) */
-  @media screen and (min-width: 1024px) {
-    .featured-organizer-container {
-      max-width: 90%;
-    }
-  
-    .organizer-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-  
-    .organizer-card {
-      max-width: 220px;
-    }
+
+  .organizer-card {
+    max-width: 200px;
+    min-height: 100px;
   }
-  
-  /* Desktops (1280px and up) */
-  @media screen and (min-width: 1280px) {
-    .featured-organizer-container {
-      max-width: 1200px;
-      /* padding: 2.5rem 2rem; */
-    }
-  
-    .organizer-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-  
-    .organizer-card {
-      max-width: 250px;
-      min-height: 120px;
-    }
-  
-    .organizer-logo {
-      max-height: 80px;
-    }
+
+  .organizer-logo {
+    max-height: 70px;
   }
-  
-  /* Large Screens (1536px and up) */
-  @media screen and (min-width: 1536px) {
-    .featured-organizer-container {
-      max-width: 1400px;
-    }
-  
-    .organizer-grid {
-      grid-template-columns: repeat(6, 1fr);
-      gap: 3rem;
-    }
+}
+
+/* Small Laptops (1024px and up) */
+@media screen and (min-width: 1024px) {
+
+  .organizer-card {
+    max-width: 220px;
   }
-  
-  /* Hover effects only for devices that support hover */
-  @media (hover: hover) {
-    .organizer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+}
+
+/* Desktops (1280px and up) */
+@media screen and (min-width: 1280px) {
+  .featured-organizer-container {
+    max-width: 1200px;
+    /* padding: 2.5rem 2rem; */
   }
-  
-  /* Ensure proper rendering on high-DPI screens */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .organizer-logo {
-      image-rendering: -webkit-optimize-contrast;
-    }
+
+  .organizer-card {
+    max-width: 250px;
+    min-height: 120px;
   }
-  
-  /* Reduce motion if user prefers */
-  @media (prefers-reduced-motion: reduce) {
-    .organizer-card {
-      transition: none;
-    }
+
+  .organizer-logo {
+    max-height: 80px;
   }
-  
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    .organizer-card {
-      background: #2a2a2a;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    
-    .featured-title {
-      color: #e0e0e0;
-    }
+}
+
+
+
+/* Large Screens (1536px and up) */
+@media screen and (min-width: 1536px) {
+  .featured-organizer-container {
+    max-width: 1400px;
   }
+}
+
+/* Hover effects only for devices that support hover */
+@media (hover: hover) {
+  .organizer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Ensure proper rendering on high-DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .organizer-logo {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .organizer-card {
+    transition: none;
+  }
+}

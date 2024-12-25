@@ -5,8 +5,8 @@ function Journals() {
     return (
         <div style={{height: "100%"}}>
             <div className="Journals px-16">
-                <h1>TOP JOURNALS WITH IMPACT FACTORS</h1>
-                <button className="tablinks" >ACTIVE QUALITY JOURNALS</button>
+            <h1 className="border-red border-gray">Top Journals with Impact Factors</h1>
+                <button className="tablinks" >Active Quality Journal</button>
                 <h3>SCOPUS INDEXED JOURNALS</h3>
             </div>
             <div className="mx-auto" style={{padding: "2rem"}}>
