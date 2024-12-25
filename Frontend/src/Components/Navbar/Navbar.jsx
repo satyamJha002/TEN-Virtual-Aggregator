@@ -35,7 +35,7 @@ const Navbar = () => {
           data-type="ugc"
           role="presentation"
           aria-hidden="true"
-          className="w-12 h-12 lg:w-14 lg:h-14 mr-2"
+          className="w-8 h-8 lg:w-9 lg:h-9 mr-4"
         >
           <g>
             <g opacity=".86">

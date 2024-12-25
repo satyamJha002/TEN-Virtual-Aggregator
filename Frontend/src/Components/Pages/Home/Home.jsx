@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="max-w-6xl mx-auto">
       {/* Search Section */}
       <div className="header-container">
         <h1>Find Your Next Conference</h1>
