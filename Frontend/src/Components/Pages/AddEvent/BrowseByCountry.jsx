@@ -40,13 +40,13 @@ const countries = {
     "Greece",
     "Ireland",
     "Italy",
-    "Nether lands",
+    "Netherlands",
     "Norway",
     "Poland",
     "Russia",
     "Spain",
     "Sweden",
-    "Switzer land",
+    "Switzerland",
     "Turkey",
     "UK",
     "Ukraine",
@@ -70,7 +70,7 @@ function BrowseByCountry() {
     <div className="p-4 bg-gray-100 rounded-md shadow-md">
       {/* Header - Hidden in Mobile */}
       <h2
-        className="text-2xl font-semibold cursor-pointer  items-center justify-between md:block hidden"
+        className="text-2xl font-semibold cursor-pointer items-center justify-between md:block hidden"
         onClick={toggleDropdown}
         aria-expanded={isActive}
         aria-controls="country-list"
@@ -81,13 +81,13 @@ function BrowseByCountry() {
       {/* Country List */}
       <div
         id="country-list"
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-4"
+        className="flex flex-wrap gap-2 mt-4"
         aria-hidden={!isActive}
       >
         {allCountries.map((country) => (
           <button
             key={country}
-            className="bg-white text-gray-800 font-medium py-2  rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="bg-white text-gray-800 font-medium py-2 px-4 rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400"
             aria-label={`Browse ${country}`}
           >
             {country}

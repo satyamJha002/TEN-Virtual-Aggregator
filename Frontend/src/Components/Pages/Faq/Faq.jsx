@@ -72,7 +72,7 @@ function Faq() {
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-300 py-3">
               <p
-                className="cursor-pointer text-xl font-semibold flex justify-between items-center"
+                className="cursor-pointer mb-2 text-xl font-semibold flex justify-between items-center"
                 onClick={() => toggleFaq(index)}
               >
                 {faq.question}

@@ -2,7 +2,7 @@ function TermsConditions() {
   return (
     <div
       className="space-y-4 text-lg text-gray-700 my-6 "
-      style={{ marginTop: "2rem" }}
+      style={{ marginTop: "3rem" }}
     >
       <h3 className="text-2xl font-semibold relative inline-block mb-4">
         Terms and Conditions
@@ -63,7 +63,7 @@ function TermsConditions() {
 
 function PrivacyPolicy() {
   return (
-    <div className="px-4 py-6 my-6 space-y-6 max-w-6xl ">
+    <div className="px-4 py-6 my-6 space-y-6 mx-auto max-w-6xl ">
       <h3 className="text-2xl font-semibold relative inline-block mb-4">
         Privacy Policy
         <span className="block h-1 w-20 bg-red-800 absolute bottom-[-6px] left-0"></span>
