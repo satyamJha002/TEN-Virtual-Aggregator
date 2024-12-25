@@ -114,7 +114,7 @@ const Navbar = () => {
               isActive ? activeStyle : inactiveStyle
             }
           >
-            <span >{item.label}</span>
+            SCIENTIFIC EVENTS
           </NavLink>
         </li>
         <li>

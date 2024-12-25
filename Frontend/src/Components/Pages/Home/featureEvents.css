@@ -4,6 +4,8 @@
     max-width: 100%;
     margin: 0 auto;
     /* padding: 1rem; */
+    padding: 0px 13px;
+    /* margin: 20px */
   }
   
   .featured-section h2 {
@@ -13,6 +15,7 @@
     font-weight: 600;
     position: relative;
     text-align: center;
+    margin-left: 10px;
   }
   
   .featured-section h2::after {
@@ -30,7 +33,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 0.5rem;
+    padding: 1rem;
   }
   
   .feature-card {
