@@ -73,6 +73,10 @@ const Home = () => {
           and complete support with regard to paper publications. Stay ahead of
           your competitors with AWR and elevate your academic journey.
         </p>
+        <p>
+        International conferences on science, engineering, management, health and allied areas at Academic World Research are the centres for academic and business interaction which makes us a flag bearer in global market of professional event promotion. Detailed review, assessment and user friendly accessibility makes us the trailblazer of academic conferences worldwide.
+        </p>
+        <p>Academic World Research is a pin board to find and book mark international conference of your need that suits your academic and professional requirements.</p>
       </div>
 
       <div className="main-content">

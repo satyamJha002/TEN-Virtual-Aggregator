@@ -1,0 +1,115 @@
+/* Base Styles */
+.filter-events-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .filter-main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+  }
+  
+  .filter-left-column,
+  .filter-right-column {
+    width: 100%; /* Default full width for better stacking on smaller screens */
+  }
+  
+  .header_filter {
+    margin-bottom: 2rem;
+  }
+  
+  .header_filter h1 {
+    color: #721c24;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #721c24;
+  }
+  
+  .filter_events-table {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  
+  .filter_table-header {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    background-color: #721c24;
+    color: white;
+    padding: 1rem;
+    font-weight: bold;
+  }
+  
+  .filter_date-col {
+    font-weight: 500;
+  }
+  
+  .filter_name-col {
+    padding-right: 1rem;
+  }
+  
+  .filter_venue-col {
+    font-style: italic;
+  }
+  
+  .filter_table_row {
+    display: grid;
+    grid-template-columns: 150px 1fr 200px;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Desktops and Larger Screens (1024px and up) */
+  @media (min-width: 1024px) {
+    .filter-events-container {
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .filter-main-content {
+      flex-direction: row;
+    }
+    .filter-left-column,
+    .filter-right-column {
+      width: 50%; /* Equal width columns */
+    }
+  }
+  
+  /* Tablets (768px to 1023px) */
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .filter-main-content {
+      flex-direction: column; /* Stack columns vertically */
+    }
+    .filter-left-column,
+    .filter-right-column {
+      width: 100%; /* Full width for stacked layout */
+    }
+    .header_filter h1 {
+      font-size: 1.6rem;
+    }
+  }
+  
+  /* Mobile Devices (767px and below) */
+  @media (max-width: 767px) {
+    .filter-events-container {
+      padding: 1rem;
+      flex-direction: column; /* Stack items vertically */
+    }
+    .filter_events-table {
+      width: 100%;
+    }
+    .header_filter h1 {
+      font-size: 1.5rem;
+    }
+    .filter_table-header,
+    .filter_table_row {
+      grid-template-columns: 100px 1fr 150px; /* Adjust grid layout for smaller screens */
+      font-size: 0.9rem;
+    }
+  }
+  
