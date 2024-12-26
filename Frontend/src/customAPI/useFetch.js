@@ -27,9 +27,8 @@ const useFetch = (
         params: customParams,
         data: customBody,
       });
-
-      setData(response.data.data);
-      return { success: true, data: response.data.data };
+      setData(response.data);
+      return { success: true, data: response.data };
     } catch (error) {
       const errorMessage =
         error.response?.data?.message ||
@@ -43,7 +42,7 @@ const useFetch = (
   };
 
   useEffect(() => {
-    if (method === "GET" && params && !skip) fetchData();
+    if (method === "GET" || (params && !skip)) fetchData();
   }, [params, method, skip]);
 
   return { data, loading, error, fetchData, setBody, setParams };

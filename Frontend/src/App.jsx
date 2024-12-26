@@ -13,7 +13,7 @@ import Blog from "./Components/Pages/Blog/Blog";
 import Home from "./Components/Pages/Home/Home";
 import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
-import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
+// import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
 import Login from "./Components/Admin/Login";
 
@@ -23,7 +23,7 @@ function App() {
   const isLogin = location.pathname === "/login";
   return (
     <div>
-      {!isAdminRoute && !isLogin && <Navbar />}
+      {!isAdminRoute && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events/search" element={<FilterPage />} />
@@ -35,12 +35,11 @@ function App() {
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-        <Route path="/admin" element={<Admin />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+        <Route path="/admin" element={<Admin />} />
       </Routes>
-      {!isAdminRoute && !isLogin && <Footer />}
-
+      {!isAdminRoute && <Footer />}
       <ToastContainer />
     </div>
   );

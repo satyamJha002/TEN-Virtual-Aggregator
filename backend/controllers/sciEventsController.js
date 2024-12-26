@@ -1,23 +1,33 @@
-import SciEvent from '../models/sciEvents.js';
+import SciEvent from "../models/sciEvents.js";
 
 export const createEvent = async (req, res) => {
   try {
     const { date, name, venue } = req.body;
-    
+
     // Extract month from date (DD-MM-YYYY)
     const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
-    
-    const monthIndex = parseInt(date.split('-')[1]) - 1;
+
+    const monthIndex = parseInt(date.split("-")[1]) - 1;
     const month = months[monthIndex];
 
     const newEvent = new SciEvent({
       date,
       name,
       venue,
-      month
+      month,
     });
 
     const savedEvent = await newEvent.save();
@@ -40,13 +50,23 @@ export const updateEvent = async (req, res) => {
   try {
     const { id } = req.params;
     const { date, name, venue } = req.body;
-    
+
     const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
-    
-    const monthIndex = parseInt(date.split('-')[1]) - 1;
+
+    const monthIndex = parseInt(date.split("-")[1]) - 1;
     const month = months[monthIndex];
 
     const updatedEvent = await SciEvent.findByIdAndUpdate(
