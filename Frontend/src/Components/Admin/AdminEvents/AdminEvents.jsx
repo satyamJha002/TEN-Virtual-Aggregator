@@ -1,17 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { Edit, Trash2, Plus } from 'lucide-react';
-import useEventsStore from '../../services/eventsStore';
-import './AdminEvents.css';
+import React, { useState, useEffect } from "react";
+import { Edit, Trash2, Plus } from "lucide-react";
+import useEventsStore from "../../../services/eventsStore";
+import "./AdminEvents.css";
 
 const AdminEvents = () => {
-  const { events, loading, error, fetchEvents, addEvent, updateEvent, deleteEvent } = useEventsStore();
+  const {
+    events,
+    loading,
+    error,
+    fetchEvents,
+    addEvent,
+    updateEvent,
+    deleteEvent,
+  } = useEventsStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [formData, setFormData] = useState({
-    date: '',
-    name: '',
-    venue: ''
+    date: "",
+    name: "",
+    venue: "",
   });
 
   useEffect(() => {
@@ -21,7 +29,7 @@ const AdminEvents = () => {
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -36,16 +44,16 @@ const AdminEvents = () => {
       setIsModalOpen(false);
       resetForm();
     } catch (error) {
-      console.error('Error saving event:', error);
+      console.error("Error saving event:", error);
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this event?')) {
+    if (window.confirm("Are you sure you want to delete this event?")) {
       try {
         await deleteEvent(id);
       } catch (error) {
-        console.error('Error deleting event:', error);
+        console.error("Error deleting event:", error);
       }
     }
   };
@@ -55,7 +63,7 @@ const AdminEvents = () => {
     setFormData({
       date: event.date,
       name: event.name,
-      venue: event.venue
+      venue: event.venue,
     });
     setIsEditMode(true);
     setIsModalOpen(true);
@@ -63,9 +71,9 @@ const AdminEvents = () => {
 
   const resetForm = () => {
     setFormData({
-      date: '',
-      name: '',
-      venue: ''
+      date: "",
+      name: "",
+      venue: "",
     });
     setIsEditMode(false);
     setSelectedEvent(null);
@@ -141,8 +149,8 @@ const AdminEvents = () => {
 
       {isModalOpen && (
         <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h2>{isEditMode ? 'Edit Event' : 'Add New Event'}</h2>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <h2>{isEditMode ? "Edit Event" : "Add New Event"}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="date">Date</label>
@@ -190,7 +198,7 @@ const AdminEvents = () => {
                   Cancel
                 </button>
                 <button type="submit" className="submit-button">
-                  {isEditMode ? 'Update' : 'Add'} Event
+                  {isEditMode ? "Update" : "Add"} Event
                 </button>
               </div>
             </form>

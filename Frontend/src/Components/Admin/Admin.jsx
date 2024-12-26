@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminEvents from "./AdminEvents";
+import AdminEvents from "./AdminEvents/AdminEvents";
 import AdminJournal from "./AdminJournal/AdminJournal";
 
 export default function Admin() {
