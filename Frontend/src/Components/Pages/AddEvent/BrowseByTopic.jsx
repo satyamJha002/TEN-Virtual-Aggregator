@@ -31,7 +31,7 @@ function BrowseByTopics() {
         onClick={toggleDropdown}
         aria-expanded={isActive}
       >
-        Browse By City
+        Browse By Topics
       </h2>
 
       <div className="space-y-2">

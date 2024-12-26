@@ -15,14 +15,15 @@ import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
 import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
+import Login from "./Components/Admin/Login";
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname === "/admin";
-
+  const isLogin = location.pathname === "/login";
   return (
     <div>
-      {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && !isLogin && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events/search" element={<FilterPage />} />
@@ -36,8 +37,10 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
-      {!isAdminRoute && <Footer />}
+      {!isAdminRoute && !isLogin && <Footer />}
+
       <ToastContainer />
     </div>
   );
