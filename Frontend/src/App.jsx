@@ -13,7 +13,7 @@ import Blog from "./Components/Pages/Blog/Blog";
 import Home from "./Components/Pages/Home/Home";
 import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
-import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
+// import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
 
 function App() {
@@ -23,20 +23,20 @@ function App() {
   return (
     <div>
       {!isAdminRoute && <Navbar />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events/search" element={<FilterPage />} />
-          <Route path="/journals" element={<Journals />} />
-          <Route path="/submit" element={<Submitpaper />} />
-          <Route path="/addevents" element={<AddEvent />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/Contact-us" element={<ContactUs />} />
-          <Route path="/ScientificEvents" element={<Events />} />
-          <Route path="/faq" element={<Faq />} />
-          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/events/search" element={<FilterPage />} />
+        <Route path="/journals" element={<Journals />} />
+        <Route path="/submit" element={<Submitpaper />} />
+        <Route path="/addevents" element={<AddEvent />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/Contact-us" element={<ContactUs />} />
+        <Route path="/ScientificEvents" element={<Events />} />
+        <Route path="/faq" element={<Faq />} />
+        {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+        <Route path="/admin" element={<Admin />} />
+      </Routes>
       {!isAdminRoute && <Footer />}
       <ToastContainer />
     </div>

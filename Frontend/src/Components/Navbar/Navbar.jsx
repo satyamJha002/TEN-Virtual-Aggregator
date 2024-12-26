@@ -22,20 +22,20 @@ const Navbar = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const activeStyle = "text-white font-bold";;
+  const activeStyle = "text-white font-bold";
   const inactiveStyle = "text-[#fff]";
 
   return (
     <nav className="flex justify-around items-center px-6 py-4 bg-[#80011f] text-white relative z-50 navbar">
       <div className="flex items-center">
-      <svg
+        <svg
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 243.913 230.792"
           xmlns="http://www.w3.org/2000/svg"
           data-type="ugc"
           role="presentation"
           aria-hidden="true"
-          className="w-12 h-12 lg:w-14 lg:h-14 mr-2"
+          className="w-8 h-8 lg:w-9 lg:h-9 mr-4"
         >
           <g>
             <g opacity=".86">
@@ -170,65 +170,64 @@ const Navbar = () => {
         <ul className="lg:hidden absolute top-full left-0 w-full bg-[#80011f] text-white flex flex-col space-y-4 p-4">
           <li>
             <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            HOME
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/ScientificEvents"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            SCIENTIFIC EVENTS
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/journals"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            JOURNAL
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/AddEvents"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            ADD EVENT
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/contact-us"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            CONTACT US
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/blog"
-            className={({ isActive }) =>
-              isActive ? activeStyle : inactiveStyle
-            }
-          >
-            BLOG
-          </NavLink>
-        </li>
-          
+              to="/"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              HOME
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/ScientificEvents"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              SCIENTIFIC EVENTS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/journals"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              JOURNAL
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/AddEvents"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              ADD EVENT
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact-us"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              CONTACT US
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) =>
+                isActive ? activeStyle : inactiveStyle
+              }
+            >
+              BLOG
+            </NavLink>
+          </li>
         </ul>
       )}
     </nav>
