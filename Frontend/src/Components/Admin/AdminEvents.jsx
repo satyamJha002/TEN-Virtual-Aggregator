@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Edit, Trash2, Plus } from 'lucide-react';
+import useEventsStore from '../../services/eventsStore';
 import './AdminEvents.css';
 
 const AdminEvents = () => {
-  const [events, setEvents] = useState([]);
+  const { events, loading, error, fetchEvents, addEvent, updateEvent, deleteEvent } = useEventsStore();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -16,16 +16,7 @@ const AdminEvents = () => {
 
   useEffect(() => {
     fetchEvents();
-  }, []);
-
-  const fetchEvents = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/api/events');
-      setEvents(response.data);
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
+  }, [fetchEvents]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -38,11 +29,10 @@ const AdminEvents = () => {
     e.preventDefault();
     try {
       if (isEditMode) {
-        await axios.put(`http://localhost:3000/api/events/${selectedEvent._id}`, formData);
+        await updateEvent(selectedEvent._id, formData);
       } else {
-        await axios.post('http://localhost:3000/api/events', formData);
+        await addEvent(formData);
       }
-      fetchEvents();
       setIsModalOpen(false);
       resetForm();
     } catch (error) {
@@ -53,8 +43,7 @@ const AdminEvents = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this event?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/events/${id}`);
-        fetchEvents();
+        await deleteEvent(id);
       } catch (error) {
         console.error('Error deleting event:', error);
       }
@@ -81,6 +70,14 @@ const AdminEvents = () => {
     setIsEditMode(false);
     setSelectedEvent(null);
   };
+
+  if (loading) {
+    return <div className="loading">Loading events...</div>;
+  }
+
+  if (error) {
+    return <div className="error">Error: {error}</div>;
+  }
 
   return (
     <div className="admin-container">
@@ -117,30 +114,40 @@ const AdminEvents = () => {
                   <button
                     onClick={() => handleEdit(event)}
                     className="edit-button"
+                    aria-label="Edit event"
                   >
                     <Edit size={20} />
                   </button>
                   <button
                     onClick={() => handleDelete(event._id)}
                     className="delete-button"
+                    aria-label="Delete event"
                   >
                     <Trash2 size={20} />
                   </button>
                 </td>
               </tr>
             ))}
+            {events.length === 0 && (
+              <tr>
+                <td colSpan="2" className="no-events">
+                  No events found. Add your first event!
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
 
       {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
             <h2>{isEditMode ? 'Edit Event' : 'Add New Event'}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Date</label>
+                <label htmlFor="date">Date</label>
                 <input
+                  id="date"
                   type="text"
                   name="date"
                   value={formData.date}
@@ -150,8 +157,9 @@ const AdminEvents = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Event Name</label>
+                <label htmlFor="name">Event Name</label>
                 <input
+                  id="name"
                   type="text"
                   name="name"
                   value={formData.name}
@@ -160,8 +168,9 @@ const AdminEvents = () => {
                 />
               </div>
               <div className="form-group">
-                <label>Venue</label>
+                <label htmlFor="venue">Venue</label>
                 <input
+                  id="venue"
                   type="text"
                   name="venue"
                   value={formData.venue}
