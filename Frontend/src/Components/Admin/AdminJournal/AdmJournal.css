@@ -210,11 +210,19 @@
     gap: 0.4rem;
   }
 
+  .journal-details {
+    width: 100%;
+  }
+
   .journal-table-row {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+  }
+
+  .journal-actions-cell {
+    border: none;
   }
 
   .journal-action-column {

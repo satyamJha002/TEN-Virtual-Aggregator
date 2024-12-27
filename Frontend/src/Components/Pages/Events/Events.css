@@ -91,13 +91,6 @@
   margin-bottom: 2rem;
 }
 
-.header h1 {
-  color: #721c24;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #721c24;
-}
 
 /* Navigation Styles */
 .month-navigation {

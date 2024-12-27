@@ -85,11 +85,7 @@ function AddEvent() {
       <div className="w-full flex flex-col md:flex-row items-start">
         {/* Left Section: Add Events */}
         <div className="flex-1 w-full">
-          <h3 className="text-2xl font-semibold relative mb-8 border-red border-gray">
-            Add Events
-          </h3>
-
-          <div className="p-6 bg-white shadow-md rounded-md">
+          <div className="px-6 py-4 bg-white border shadow-md" style={{borderRadius: "4px"}}>
             <Form />
           </div>
         </div>

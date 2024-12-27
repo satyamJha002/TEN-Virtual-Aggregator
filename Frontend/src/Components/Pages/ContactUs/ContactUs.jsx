@@ -147,31 +147,54 @@ const ContactUs = () => {
     return null;
   };
 
+  const [searchFilter, setSearchFilter] = useState(null); // No filter selected initially
+
+  const handleButtonClick = (filter) => {
+    // Toggle visibility of the selected filter
+    setSearchFilter((prevFilter) => (prevFilter === filter ? null : filter));
+  };
+
+  useEffect(() => {
+    // Update state based on window size
+    const handleResize = () => {
+      const desktopView = window.innerWidth >= 768;
+      setIsDesktop(desktopView);
+      if (desktopView) setSearchFilter(null); // Reset mobile filter when switching to desktop
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="contact-page max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto bg-white rounded-md flex items-start relative">
+      {/* Filter Buttons - Mobile */}
       {!isDesktop && (
-        <>
-          <h3 className="text-2xl font-semibold relative inline-block mb-2">
+        <div className="w-full flex flex-col items-start mb-4 md:hidden">
+          {/* Header */}
+          <h3 className="m-w-xl mx-auto font-bold text-xl">
             Browse By
             <span className="block h-1 w-20 bg-red-800 absolute bottom-0 left-0"></span>
           </h3>
-          <div className="mobile-buttons flex">
+
+          {/* Buttons */}
+          <div className="w-full flex justify-between mt-2">
             <button
-              aria-label="Browse By City"
-              onClick={() => setView(view === "city" ? "" : "city")}
+              aria-label="Browse By Cities"
+              onClick={() => handleButtonClick("india")}
               className={`flex-1 text-center p-2 rounded-md mx-1 ${
-                view === "city"
+                searchFilter === "india"
                   ? "bg-red-800 text-white"
                   : "bg-gray-200 text-black"
               }`}
             >
-              City
+              Cities
             </button>
             <button
               aria-label="Browse By Country"
-              onClick={() => setView(view === "country" ? "" : "country")}
+              onClick={() => handleButtonClick("country")}
               className={`flex-1 text-center p-2 rounded-md mx-1 ${
-                view === "country"
+                searchFilter === "country"
                   ? "bg-red-800 text-white"
                   : "bg-gray-200 text-black"
               }`}
@@ -180,9 +203,9 @@ const ContactUs = () => {
             </button>
             <button
               aria-label="Browse By Topics"
-              onClick={() => setView(view === "topics" ? "" : "topics")}
+              onClick={() => handleButtonClick("topics")}
               className={`flex-1 text-center p-2 rounded-md mx-1 ${
-                view === "topics"
+                searchFilter === "topics"
                   ? "bg-red-800 text-white"
                   : "bg-gray-200 text-black"
               }`}
@@ -190,13 +213,20 @@ const ContactUs = () => {
               Topics
             </button>
           </div>
-
-          {view && <div className="mobile-view">{renderSection()}</div>}
-        </>
+        </div>
       )}
 
-      <div className="contact-form">
-        <h2>Contact Us</h2>
+      {/* Display Results - Overlapping */}
+      {searchFilter && !isDesktop && (
+        <div className="absolute top-[105px] left-0 w-full bg-white shadow-md p-4 rounded-md z-50 max-h-[calc(100vh-120px)] overflow-y-auto">
+          {searchFilter === "india" && <BrowseByCity />}
+          {searchFilter === "country" && <BrowseByCountry />}
+          {searchFilter === "topics" && <BrowseByTopics />}
+        </div>
+      )}
+
+      <div className="contact-form border shadow-md" style={{borderRadius: "4px"}}>
+        <h2  className="text-2xl cursor-pointer border-red border-gray items-center mb-4">Contact Us</h2>
         <p>Please get in touch for comments or requests.</p>
         {loading && <div>Loading...</div>}
         {error && <div className="text-red-700">Error: {error}</div>}
@@ -218,13 +248,11 @@ const ContactUs = () => {
         </div>
       </div>
 
+      {/* Right Section: Desktop */}
       {isDesktop && (
-        <div className="browse-section">
-{/*           <h3>Browse By City</h3> */}
+        <div className="hidden md:block w-full md:w-96 md:ml-6">
           <BrowseByCity />
-
           <BrowseByCountry />
-
           <BrowseByTopics />
         </div>
       )}

@@ -6,7 +6,6 @@ import BrowseByCountry from "../AddEvent/BrowseByCountry";
 import BrowseByTopics from "../AddEvent/BrowseByTopic";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -17,7 +16,6 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    toast.success("Successfully", { position: "top-center" });
     navigate(
       `/events/search?query=${query}&location=${location}&dateFilter=${dateFilter}`
     );
@@ -61,7 +59,7 @@ const Home = () => {
       </div>
 
       {/* Welcome Section */}
-      <div className="welcome-section">
+      <div className="welcome-section" style={{ margin: "3rem auto" }}>
         <h2 className="border-red border-gray">
           Welcome To Academic World Research 2025
         </h2>
@@ -122,7 +120,7 @@ const Home = () => {
           </div>
           <FeaturedOrganizer />
         </div>
-        <div className="right-column">
+        <div className="right-column mt-9">
           <BrowseByCity />
           <BrowseByCountry />
           <BrowseByTopics />
