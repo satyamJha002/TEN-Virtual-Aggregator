@@ -9,20 +9,33 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem('adminToken');
-    if (token) {
+    const adminData = localStorage.getItem('adminData');
+
+    if (token && adminData) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setAdmin(JSON.parse(adminData));
       checkAuthStatus();
     } else {
       setLoading(false);
     }
+
+    const refreshInterval = setInterval(checkAuthStatus, 25 * 60 * 1000); 
+
+    return () => clearInterval(refreshInterval);
   }, []);
 
   const checkAuthStatus = async () => {
     try {
       const response = await api.get('/admin');
       setAdmin(response.data);
+      localStorage.setItem('adminData', JSON.stringify(response.data));
     } catch (error) {
-      localStorage.removeItem('adminToken');
+      console.error('Auth check failed:', error);
+      if (error.response?.status === 401) {
+        localStorage.removeItem('adminToken');
+        localStorage.removeItem('adminData');
+        setAdmin(null);
+      }
     } finally {
       setLoading(false);
     }
@@ -32,6 +45,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data } = await api.post('/admin/login', credentials);
       localStorage.setItem('adminToken', data.token);
+      localStorage.setItem('adminData', JSON.stringify(data));
       api.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
       setAdmin(data);
       return { success: true };
@@ -45,6 +59,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('adminToken');
+    localStorage.removeItem('adminData');
     delete api.defaults.headers.common['Authorization'];
     setAdmin(null);
   };
