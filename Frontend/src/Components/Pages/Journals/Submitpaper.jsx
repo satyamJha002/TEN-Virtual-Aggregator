@@ -1,9 +1,11 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
+import { useLocation } from 'react-router-dom';
 
 const App = () => {
   const fileInputRef = useRef(null); // Reference for the file input
-
+  const location = useLocation();
+  const { title } = location.state || {}; 
   const [formData, setFormData] = useState({
     authorName: "",
     coAuthors: [""],
@@ -123,8 +125,14 @@ const App = () => {
   };
 
   return (
-    <div className='max-w-4xl mx-auto p-8 bg-gray-50 rounded-lg shadow-lg'>
-      <h1 className='text-3xl font-semibold text-center text-orange-600 mb-6'>
+    <>
+    <div className="welcome-section  max-w-6xl my-8 sm:px-10" style={{margin:"3rem auto" }}>
+      <h2 className="border-red border-gray">
+      {title}
+      </h2>
+    </div>
+    <div className='max-w-4xl mx-auto mb-28 p-8 bg-gray-50 rounded-lg shadow-lg'>
+      <h1 className='text-3xl font-semibold text-center text-[#80011f] mb-6'>
         Paper Submission
       </h1>
 
@@ -142,6 +150,7 @@ const App = () => {
             required
             className='block w-full p-3 border rounded-md focus:ring-2 focus:ring-orange-500'
           />
+           
         </div>
 
         {/* Co-Authors */}
@@ -160,7 +169,7 @@ const App = () => {
               <button
                 type='button'
                 onClick={() => removeCoAuthorField(index)}
-                className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600'
+                className='px-3 py-1 bg-[#80011f] text-white rounded hover:bg-red-600'
               >
                 -
               </button>
@@ -218,6 +227,11 @@ const App = () => {
             <option value='UK'>UK</option>
           </select>
         </div>
+        <div>
+          <input className='block w-full p-3 border rounded-md focus:ring-2 focus:ring-orange-500' type="text"
+          value={title} readOnly />
+
+        </div>
 
         {/* File Upload */}
         <div>
@@ -239,13 +253,14 @@ const App = () => {
           <button
             type='submit'
             disabled={isLoading}
-            className='px-6 py-3 bg-orange-600 text-white rounded-md hover:bg-orange-700 disabled:bg-orange-400'
+            className='px-6 py-3 bg-[#80011f] text-white rounded-md hover:bg-orange-700 disabled:bg-[#80011f]'
           >
             {isLoading ? "Submitting..." : "Submit Paper"}
           </button>
         </div>
       </form>
     </div>
+    </>
   );
 };
 

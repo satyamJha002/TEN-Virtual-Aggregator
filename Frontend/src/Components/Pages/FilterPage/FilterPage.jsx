@@ -32,10 +32,6 @@ const FilterPage = () => {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
   return (
     <div className="filter-events-container">
       <div className="filter-main-content">
@@ -50,6 +46,7 @@ const FilterPage = () => {
                 <div className="filter_name-col">Conference Name</div>
                 <div className="filter_venue-col">VENUE</div>
               </div>
+              {error && <div>{error}</div>}
               {data?.data?.map((event) => (
                 <div className="filter_table_row" key={event._id}>
                   <div className="filter_date-col">

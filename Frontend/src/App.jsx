@@ -15,7 +15,7 @@ import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
 import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from "./context/AuthContext";
 import Login from "./Components/Admin/Login/Login";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
@@ -39,11 +39,14 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin" element={
-          <ProtectedRoute>
-            <Admin />
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       {!isAdminRoute && <Footer />}
       <ToastContainer />
@@ -51,7 +54,7 @@ function App() {
   );
 }
 
-function AppWrapper()  {
+function AppWrapper() {
   return (
     <BrowserRouter>
       <AuthProvider>

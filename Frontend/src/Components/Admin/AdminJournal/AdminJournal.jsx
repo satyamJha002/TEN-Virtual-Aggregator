@@ -112,7 +112,7 @@ const AdminJournal = () => {
           </thead>
           <tbody>
             {data?.journals.map((journal) => (
-              <tr key={journal._id}>
+              <tr key={journal._id} className="journal-table-row">
                 <td className="journal-details">
                   <div className="journal-name">{journal.title}</div>
                   <div className="journal-info">{journal.ISSN}</div>

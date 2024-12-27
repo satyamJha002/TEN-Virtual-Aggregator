@@ -6,7 +6,6 @@ import BrowseByCountry from "../AddEvent/BrowseByCountry";
 import BrowseByTopics from "../AddEvent/BrowseByTopic";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -17,7 +16,6 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    toast.success("Successfully", { position: "top-center" });
     navigate(
       `/events/search?query=${query}&location=${location}&dateFilter=${dateFilter}`
     );
