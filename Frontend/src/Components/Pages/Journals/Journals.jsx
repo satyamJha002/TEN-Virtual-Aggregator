@@ -20,8 +20,8 @@ function Journals() {
 
   return (
     <div style={{ height: "100%" }}>
-      <div className="Journals" style={{ padding: "0 3.4rem" }}>
-        <h1 className="all-heading border-red border-gray"> Top Journals with Impact Factors </h1>
+      <div className="Journals mt-8" style={{ padding: "0 3.4rem" }}>
+        <h1 className="all-heading border-red border-gray" style={{marginBottom: "0"}}> Top Journals with Impact Factors </h1>
         <button className="tablinks">ACTIVE QUALITY JOURNALS</button>
         <h3>SCOPUS INDEXED JOURNALS</h3>
       </div>

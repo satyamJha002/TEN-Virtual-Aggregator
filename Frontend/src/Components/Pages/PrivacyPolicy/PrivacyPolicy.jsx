@@ -4,11 +4,9 @@ function TermsConditions() {
       className="space-y-4 text-lg text-gray-700 my-6 "
       style={{ marginTop: "3rem" }}
     >
-      <h3 className="text-2xl font-semibold relative inline-block mb-4">
+      <h3 className="text-2xl border-red border-gray w-100 relative mb-4">
         Terms and Conditions
-        <span className="block h-1 w-20 bg-red-800 absolute bottom-[-6px] left-0"></span>
       </h3>
-      <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
 
       <p>
         Please read the Terms and Conditions contained below before using the
@@ -64,11 +62,9 @@ function TermsConditions() {
 function PrivacyPolicy() {
   return (
     <div className="px-4 py-6 my-6 space-y-6 mx-auto max-w-6xl ">
-      <h3 className="text-2xl font-semibold relative inline-block mb-4">
+      <h3 className="text-2xl font-semibold border-gray border-red mb-4">
         Privacy Policy
-        <span className="block h-1 w-20 bg-red-800 absolute bottom-[-6px] left-0"></span>
       </h3>
-      <hr className="border-t-0 border-b-2 border-gray-300 mt-2 mb-4" />
 
       <p className="text-gray-700 leading-relaxed mb-4 text-lg">
         <a href="/" className="hover:text-red-800">

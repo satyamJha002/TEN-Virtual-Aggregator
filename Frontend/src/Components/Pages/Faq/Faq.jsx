@@ -65,10 +65,9 @@ function Faq() {
     <div className="flex flex-col md:flex-row lg:flex-row px-4 md:px-8 py-6 space-y-6 md:space-y-0 md:space-x-6">
       {/* FAQ Section */}
       <div className="flex-1 w-full">
-        <h3 className="text-2xl font-semibold mb-2 block">FAQ</h3>
-        <span className="block h-1 w-20 bg-red-800 mb-4"></span>
+        <h3 className="text-2xl border-red pt-4 mb-8 border-gray">FAQ</h3>
 
-        <div className="p-4 bg-white border border-gray-300 ">
+        <div className="p-4 bg-white border border-gray-300 " style={{borderRadius: "4px"}}>
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-300 py-3">
               <p

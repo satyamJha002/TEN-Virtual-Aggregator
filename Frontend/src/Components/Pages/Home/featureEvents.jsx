@@ -49,7 +49,7 @@ const FeatureEvents = () => {
   return (
     <div className="welcome-section">
       <div className="featured-section">
-        <h2 className='border-red border-gray'>Featured Events</h2>
+        <h2 className='featured-title border-red border-gray'>Featured Events</h2>
         <div className='mx-auto maxw-2xl'>
             <FeatureCard/>
         </div>

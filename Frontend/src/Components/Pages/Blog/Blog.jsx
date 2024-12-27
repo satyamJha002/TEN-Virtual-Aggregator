@@ -2,7 +2,7 @@ import { FaArrowRight, FaRegClock, FaUser } from "react-icons/fa";
 
 function Card({ heading, content, content2, content3 }) {
   return (
-    <div className="bg-white border min-h-44  p-4  mb-4">
+    <div className="bg-white border min-h-44  p-4  mb-4" style={{borderRadius: "4px"}}>
       <h2 className="text-2xl font-semibold mb-2 relative">
         {heading}
         <span className="block h-1 w-10  bg-red-800 absolute bottom-[-4px] left-0"></span>
@@ -34,7 +34,7 @@ function Blog() {
   return (
     <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr,1fr] gap-8 my-8 px-4">
       {/* Main Blog Content */}
-      <div className="bg-stone-100 p-8 ">
+      <div className="border p-8 mt-4" style={{borderRadius: "4px"}}>
         <a href="#">
           {" "}
           <img src="./blog.jpg" alt="banner" className="w-full  mb-4" />
@@ -82,7 +82,7 @@ function Blog() {
       </div>
 
       {/* Sidebar */}
-      <div className=" bg-stone-100 p-4  ">
+      <div className="p-4">
         <Card
           heading="Recent Posts"
           content="A Comprehensive Guide To The Upcoming Conferences In 2025"

@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-4">
+    <div className="max-w-6xl mx-auto p-4 pt-8">
       {/* Search Section */}
       <div className="header-container">
         <h1>Find Your Next Conference</h1>
@@ -62,7 +62,7 @@ const Home = () => {
 
       {/* Welcome Section */}
       <div className="welcome-section" style={{margin: "3rem auto"}}>
-        <h2 className="border-red border-gray">
+        <h2 className="border-red py-4 border-gray">
           Welcome To Academic World Research 2025
         </h2>
         <p>
