@@ -35,7 +35,7 @@ function BrowseByCity() {
   return (
     <div className="bg-gray-100 p-4 mb-8" style={{borderRadius: "4px"}}>
       <h2
-        className="text-2xl font-semibold cursor-pointer border-red border-gray items-center mb-4 justify-between md:block hidden"
+        className="text-2xl cursor-pointer border-red border-gray items-center mb-4 justify-between md:block hidden"
         onClick={toggleDropdown}
         aria-expanded={isActive}
       >

@@ -50,7 +50,7 @@ const FeaturedOrganizer = () => {
   return (
     <div className="featured-organizer-container">
       <h2 className="featured-title border-red border-gray">Featured Organizer</h2>
-      <div className="flex flex-wrap justify-evenly items-center">
+      <div className="flex flex-wrap justify-evenly items-center" style={{marginTop: "3rem"}}>
         {organizers.map((organizer) => (
           <div key={organizer.id} >
             <img

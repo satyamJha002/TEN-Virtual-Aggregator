@@ -18,13 +18,13 @@ const customStyles = {
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: "black",
-    fontSize: "1rem",
+    color: "gray",
+    fontSize: "0.9rem",
   }),
   input: (provided) => ({
     ...provided,
     color: "#111827",
-    fontSize: "1rem",
+    fontSize: "0.9rem",
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
@@ -95,20 +95,28 @@ function Form() {
 
   return (
     <div>
-      <form>
+      <form className="px-4">
+      <h3 className="text-2xl relative mb-8 border-red border-gray">
+            Add Events
+          </h3>
+        {/* Event Description */}
+        <h3 className="text-xl text-extrabold mb-2">Event Description</h3>
+        <hr className="mb-6" />
+
         {/* Event Name */}
         <div className="mb-4">
           <label
             htmlFor="event-name"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Event Name:
+            Event Name :
           </label>
           <input
             type="text"
             id="event-name"
             placeholder="Enter Event Name"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
@@ -116,51 +124,61 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="event-title"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Event Title:
+            Event Title :
           </label>
           <input
             type="text"
             id="event-title"
             placeholder="Enter Title"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
         {/* Event Type */}
         <div className="mb-4">
-          <label
-            htmlFor="event-type"
-            className="block text-sm font-medium mb-1"
-          >
-            Event Type:
-          </label>
-          <select name="eventType" id="event-type" className="custom-select">
-            <option value="">Select An Event Type </option>
-            {eventTypes.map((event, index) => (
-              <option key={index} value={event}>
-                {event}
-              </option>
-            ))}
-          </select>
-        </div>
+  <label
+    htmlFor="event-type"
+    className="block text-md mb-2 text-gray mb-1"
+  >
+    Event Type :
+  </label>
+  <select
+    name="eventType"
+    id="event-type"
+    className="custom-select"
+    style={{color: "gray", fontSize: "0.9rem"}}
+  >
+    <option value="" >
+      <span>Select Event Type</span>
+    </option>
+    {eventTypes.map((event, index) => (
+      <option key={index} value={event}>
+        {event}
+      </option>
+    ))}
+  </select>
+</div>
+
 
         {/* Event Topics */}
         <div className="mb-4">
           <label
             htmlFor="event-topic"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Event Topics:
+            Event Topics :
           </label>
           <select
             name="eventTopic"
             id="event-topic"
             className="custom-select text-gray-900 appearance-none"
+            style={{color: "gray", fontSize: "0.9rem"}}
           >
             <option value="" disabled selected className="text-gray-500">
-              Select An Event Topic
+              Select Event Topic 
             </option>
             {eventTopics.map((topic, index) => (
               <option key={index} value={topic} className="text-gray-500">
@@ -171,13 +189,13 @@ function Form() {
         </div>
 
         {/* Event Location */}
-        <h3 className="text-3xl  mt-6 mb-4">Event Location</h3>
+        <h3 className="text-xl mt-6 mb-2">Event Location</h3>
         <hr className="mb-6" />
 
         {/* Country */}
         <div className="mb-4">
-          <label htmlFor="country" className="block text-sm font-medium mb-1">
-            Country:
+          <label htmlFor="country" className="block text-md mb-2 text-gray mb-1">
+            Country :
           </label>
           <Select
             options={options}
@@ -190,27 +208,29 @@ function Form() {
 
         {/* State */}
         <div className="mb-4">
-          <label htmlFor="state" className="block text-sm font-medium mb-1">
-            State:
+          <label htmlFor="state" className="block text-md mb-2 text-gray mb-1">
+            State :
           </label>
           <input
             type="text"
             id="state"
             placeholder="Enter State"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
         {/* City */}
         <div className="mb-4">
-          <label htmlFor="city" className="block text-sm font-medium mb-1">
-            City:
+          <label htmlFor="city" className="block text-md mb-2 text-gray mb-1">
+            City :
           </label>
           <input
             type="text"
             id="city"
             placeholder="Enter The City"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
@@ -218,35 +238,37 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="venue-address"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Venue Address:
+            Venue Address :
           </label>
           <input
             type="text"
             id="venue-address"
             placeholder="Enter Venue Address"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
         {/* Event Organized by */}
-        <h3 className="text-3xl mt-6 mb-4">Event-Organized By</h3>
+        <h3 className="text-xl mt-6 mb-2">Event Organized By</h3>
         <hr className="mb-6" />
 
         {/* Organizing Society */}
         <div className="mb-4">
           <label
             htmlFor="organization"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Organizing Society:
+            Organizing Society :
           </label>
           <input
             type="text"
             id="organization"
             placeholder="Enter Your Organization"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
@@ -254,15 +276,16 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="contact-person"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Contact Person:
+            Contact Person :
           </label>
           <input
             type="text"
             id="contact-person"
             placeholder="Enter Name of Contact Person"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
@@ -270,9 +293,9 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="contact-number"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Contact Number:
+            Contact Number :
           </label>
           <input
             type="tel"
@@ -282,64 +305,68 @@ function Form() {
             pattern="[0-9]{10}"
             required
             maxLength="10"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
             aria-label="Contact Number"
           />
         </div>
 
         {/* Email Address */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-medium mb-1">
-            Email Address:
+          <label htmlFor="email" className="block text-md mb-2 text-gray mb-1">
+            Email Address :
           </label>
           <input
             type="email"
             id="email"
             placeholder="Enter Email Address"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
         {/* Website Address */}
         <div className="mb-4">
-          <label htmlFor="website" className="block text-sm font-medium mb-1">
-            Website Address:
+          <label htmlFor="website" className="block text-md mb-2 text-gray mb-1">
+            Website Address :
           </label>
           <input
             type="text"
             id="website"
             placeholder="Enter URL of Website"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
           />
         </div>
 
         {/* Event Dates */}
-        <h3 className="text-3xl  mt-6 mb-4">Event-Dates</h3>
+        <h3 className="text-xl mt-6 mb-2">Event-Dates</h3>
         <hr className="mb-6" />
 
         {/* Event Month-Year */}
         <div className="mb-4">
           <label
             htmlFor="month-year"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 mb-1"
           >
-            Event Month-Year:
+            Event Month-Year :
           </label>
-          <MonthYearDropdown className="custom-select" />
+          <MonthYearDropdown className="custom-select"/>
         </div>
 
         {/* Start Date */}
         <div className="mb-4">
           <label
             htmlFor="start-date"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Start Date:
+            Start Date :
           </label>
           <input
             type="date"
             id="start-date"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
             onChange={(e) => setStartDate(e.target.value)}
             placeholder="dd-mm-yyyy"
           />
@@ -347,13 +374,14 @@ function Form() {
 
         {/* End Date */}
         <div className="mb-4">
-          <label htmlFor="end-date" className="block text-sm font-medium mb-1">
-            End Date:
+          <label htmlFor="end-date" className="block text-md mb-2 text-gray mb-1">
+            End Date :
           </label>
           <input
             type="date"
             id="end-date"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
             onChange={(e) => setEndDate(e.target.value)}
             placeholder="dd-mm-yyyy"
           />
@@ -363,14 +391,15 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="submission-deadline"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Submission Deadline:
+            Submission Deadline :
           </label>
           <input
             type="date"
             id="submission-deadline"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
             onChange={(e) => setSubmissionDate(e.target.value)}
           />
         </div>
@@ -379,14 +408,15 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="registration-deadline"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Registration Deadline:
+            Registration Deadline :
           </label>
           <input
             type="date"
             id="registration-deadline"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-black text-gray-900 text-base"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 text-base"
             onChange={(e) => setRegistrationDate(e.target.value)}
           />
         </div>
@@ -395,13 +425,14 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="abstraction"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Abstraction:
+            Abstraction :
           </label>
           <textarea
             id="abstraction"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200"
+            style={{borderRadius: "4px"}}
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200"
           />
         </div>
 
@@ -409,18 +440,21 @@ function Form() {
         <div className="mb-4">
           <label
             htmlFor="event-description"
-            className="block text-sm font-medium mb-1"
+            className="block text-md mb-2 text-gray mb-1"
           >
-            Event Description:
+            Event Description :
           </label>
           <textarea
             id="event-description"
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-indigo-200"
+            className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200"
+            style={{borderRadius: "4px"}}
           />
         </div>
-        <button className="bg-red-800 text-white text-xl font-bold py-4 px-6 rounded">
-          Submit
+        <div className="w-100 text-center">
+        <button className="bg-red-800 text-white text-md font-bold px-4 m-4 py-2" style={{borderRadius: "4px"}}>
+          Submit 
         </button>
+        </div>
       </form>
     </div>
   );

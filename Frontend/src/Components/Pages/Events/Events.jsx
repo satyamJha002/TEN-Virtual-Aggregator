@@ -62,7 +62,7 @@ const Events = () => {
 
       <div className="scientific-events">
         <div className="header">
-          <h1>Upcoming International Conferences</h1>
+          <h1 className='all-heading border-red border-gray'>Upcoming International Conferences</h1>
           <div className="month-navigation" role="tablist">
             {getMonthsArray().map((month) => (
               <button
