@@ -5,7 +5,7 @@ import Form from "./Form";
 import { useState, useEffect } from "react";
 
 function AddEvent() {
-  const [searchFilter, setSearchFilter] = useState(null); // No filter selected initially
+  const [searchFilter, setSearchFilter] = useState(null);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
   const handleButtonClick = (filter) => {
@@ -27,16 +27,13 @@ function AddEvent() {
 
   return (
     <div className="p-6 max-w-6xl mx-auto bg-white rounded-md flex flex-col items-start relative">
-      {/* Filter Buttons - Mobile */}
       {!isDesktop && (
         <div className="w-full flex flex-col items-start mb-4 md:hidden">
-          {/* Header */}
           <h3 className="m-w-xl mx-auto font-bold text-xl">
             Browse By
             <span className="block h-1 w-20 bg-red-800 absolute bottom-0 left-0"></span>
           </h3>
 
-          {/* Buttons */}
           <div className="w-full flex justify-between mt-2">
             <button
               aria-label="Browse By Cities"
