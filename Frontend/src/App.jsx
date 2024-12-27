@@ -15,12 +15,10 @@ import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
 // import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
-import Login from "./Components/Admin/Login";
 
 function App() {
   const location = useLocation();
   const isAdminRoute = location.pathname === "/admin";
-  const isLogin = location.pathname === "/login";
   return (
     <div>
       {!isAdminRoute && <Navbar />}
@@ -35,7 +33,6 @@ function App() {
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/login" element={<Login />} />
         {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
         <Route path="/admin" element={<Admin />} />
       </Routes>
