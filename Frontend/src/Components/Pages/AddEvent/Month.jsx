@@ -30,7 +30,7 @@ function MonthYearDropdown({ className }) {
       value={selectedMonthYear}
       onChange={(e) => setSelectedMonthYear(e.target.value)}
       className={className}
-      style={{color: "gray", fontSize: "0.9rem"}}
+      style={{ color: "gray", fontSize: "0.9rem" }}
     >
       <option value="">Select the Month & Year</option>
       {monthYearOptions.map((monthYear, index) => (

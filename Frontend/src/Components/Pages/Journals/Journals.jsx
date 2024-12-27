@@ -21,13 +21,19 @@ function Journals() {
   return (
     <div style={{ height: "100%" }}>
       <div className="Journals mt-8" style={{ padding: "0 3.4rem" }}>
-        <h1 className="all-heading border-red border-gray" style={{marginBottom: "0"}}> Top Journals with Impact Factors </h1>
+        <h1
+          className="all-heading border-red border-gray"
+          style={{ marginBottom: "0" }}
+        >
+          {" "}
+          Top Journals with Impact Factors{" "}
+        </h1>
         <button className="tablinks">ACTIVE QUALITY JOURNALS</button>
         <h3>SCOPUS INDEXED JOURNALS</h3>
       </div>
       <div style={{ padding: "3.4rem" }}>
-        <div className="cards grid grid-cols-3 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-          {/* flex flex-wrap justify-start gap-8 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/*  */}
           {error && <div>Error .... {error}</div>}
 
           {dataJournals?.journals?.map((journal) => (
