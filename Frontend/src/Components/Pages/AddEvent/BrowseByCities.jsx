@@ -35,7 +35,7 @@ function BrowseByCity() {
   return (
     <div className="bg-gray-100 p-4 mb-8" style={{borderRadius: "4px"}}>
       <h2
-        className="text-2xl font-semibold cursor-pointer border-red border-gray items-center mb-4 justify-between md:block hidden"
+        className="text-2xl cursor-pointer border-red border-gray items-center mb-4 justify-between md:block hidden"
         onClick={toggleDropdown}
         aria-expanded={isActive}
       >
@@ -46,12 +46,12 @@ function BrowseByCity() {
         {cities.map((city) => (
           <button
             key={city}
-            className="bg-red-800 text-white font-bold py-2 rounded-none text-center
+            className="bg-red-800 text-white font-bold py-2 text-center
                        w-full after:content-[''] after:absolute after:top-1/2 after:right-0
                        after:-translate-y-1/2 after:border-l-[10px] after:border-t-[10px]
                        after:border-b-[10px] after:border-l-transparent
                        after:border-t-transparent after:border-b-transparent
-                       after:border-r-red-800 hover:bg-red-700 transition-all"
+                       after:border-r-red-800 hover:bg-red-700 transition-all rounded"
             style={{
               maxWidth: "280px", // Set consistent width for the button
               position: "relative", // Required for the arrow styling

@@ -1,9 +1,18 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AdminEvents from "./AdminEvents/AdminEvents";
 import AdminJournal from "./AdminJournal/AdminJournal";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Admin() {
   const [currentPage, setCurrentPage] = useState("events");
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -15,6 +24,17 @@ export default function Admin() {
         return <AdminEvents />;
     }
   };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setSidebarOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/admin/login");
+  };
+
   return (
     <>
       <nav
@@ -25,13 +45,11 @@ export default function Admin() {
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
               <button
-                data-drawer-target="logo-sidebar"
-                data-drawer-toggle="logo-sidebar"
-                aria-controls="logo-sidebar"
+                onClick={toggleSidebar}
                 type="button"
                 className="inline-flex items-center p-2 text-sm text-white rounded-lg sm:hidden focus:outline-none focus:ring-2"
               >
-                <span className="sr-only">Open sidebar</span>
+                <span className="sr-only">Toggle sidebar</span>
                 <svg
                   className="w-6 h-6"
                   aria-hidden="true"
@@ -48,7 +66,7 @@ export default function Admin() {
               </button>
               <a href="/admin" className="flex ms-2 md:me-24">
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">
-                  Admin Pannel
+                  Admin Panel
                 </span>
               </a>
             </div>
@@ -57,8 +75,9 @@ export default function Admin() {
       </nav>
 
       <aside
-        id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full border-r sm:translate-x-0"
+        className={`fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } border-r sm:translate-x-0`}
         style={{ backgroundColor: "#80011f" }}
         aria-label="Sidebar"
       >
@@ -66,11 +85,11 @@ export default function Admin() {
           <ul className="space-y-2 font-medium">
             <li>
               <button
-                onClick={() => setCurrentPage("events")}
+                onClick={() => handlePageChange("events")}
                 className="flex items-center w-full p-2 text-white rounded-lg group hover:bg-white/10"
               >
                 <svg
-                  className="w-5 h-5 transition duration-75 text-white group-hover:text-white"
+                  className="w-5 h-5 transition duration-75 text-white"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="currentColor"
@@ -84,7 +103,7 @@ export default function Admin() {
             </li>
             <li>
               <button
-                onClick={() => setCurrentPage("journals")}
+                onClick={() => handlePageChange("journals")}
                 className="flex items-center w-full p-2 text-white rounded-lg group hover:bg-white/10"
               >
                 <svg
@@ -117,9 +136,9 @@ export default function Admin() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-white rounded-lg"
+              <button
+                onClick={handleLogout}
+                className="flex items-center w-full p-2 text-white rounded-lg group hover:bg-white/10"
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 transition duration-75"
@@ -136,8 +155,8 @@ export default function Admin() {
                     d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
                   />
                 </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Log out</span>
-              </a>
+                <span className="ms-3">Log out</span>
+              </button>
             </li>
           </ul>
         </div>

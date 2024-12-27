@@ -70,7 +70,7 @@ function BrowseByCountry() {
     <div className="p-4 bg-gray-100 mb-6" style={{borderRadius: "4px"}}>
       {/* Header - Hidden in Mobile */}
       <h2
-        className="text-2xl font-semibold cursor-pointer border-red border-gray items-center justify-between md:block hidden"
+        className="text-2xl cursor-pointer border-red border-gray items-center justify-between md:block hidden"
         onClick={toggleDropdown}
         aria-expanded={isActive}
         aria-controls="country-list"

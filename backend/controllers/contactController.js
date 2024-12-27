@@ -6,14 +6,21 @@ export const contactDetails = async (req, res) => {
     const { fullName, email, phoneNumber, queriesTitle, message } = req.body;
 
     if (!fullName || !email || !phoneNumber || !queriesTitle || !message) {
-      return res.status(400).json({ message: "All the details are required." });
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required.",
+      });
     }
 
     const existingContact = await Contact.findOne({ email });
     if (existingContact) {
-      return res.status(409).json({
-        message:
-          "A contact with this email already exists. Please use a different email.",
+      existingContact.message = existingContact.message + "\n" + message;
+      await existingContact.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Your query has been updated and is being processed again.",
+        contact: existingContact,
       });
     }
 
@@ -24,6 +31,7 @@ export const contactDetails = async (req, res) => {
       queriesTitle,
       message,
     });
+
     await newContact.save();
 
     const transporter = setupEmailTransporter();
@@ -50,11 +58,15 @@ export const contactDetails = async (req, res) => {
     });
 
     res.status(200).json({
-      message: "Your query is successfully submitted.",
+      success: true,
+      message: "Your query has been successfully submitted.",
       contact: newContact,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Error in contactDetails controller:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong. Please try again later.",
+    });
   }
 };

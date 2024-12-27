@@ -6,7 +6,6 @@ import BrowseByCountry from "../AddEvent/BrowseByCountry";
 import BrowseByTopics from "../AddEvent/BrowseByTopic";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const Home = () => {
   const [query, setQuery] = useState("");
@@ -17,7 +16,6 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    toast.success("Successfully", { position: "top-center" });
     navigate(
       `/events/search?query=${query}&location=${location}&dateFilter=${dateFilter}`
     );
@@ -61,8 +59,10 @@ const Home = () => {
       </div>
 
       {/* Welcome Section */}
-      <div className="welcome-section">
-        <h2 className="border-red border-gray">Welcome To Academic World Research 2025</h2>
+      <div className="welcome-section" style={{ margin: "3rem auto" }}>
+        <h2 className="border-red border-gray">
+          Welcome To Academic World Research 2025
+        </h2>
         <p>
           Academic World Research (AWR) will be the game changer of your life
           because it is going to give you the latest updates on all the
@@ -73,9 +73,18 @@ const Home = () => {
           your competitors with AWR and elevate your academic journey.
         </p>
         <p>
-        International conferences on science, engineering, management, health and allied areas at Academic World Research are the centres for academic and business interaction which makes us a flag bearer in global market of professional event promotion. Detailed review, assessment and user friendly accessibility makes us the trailblazer of academic conferences worldwide.
+          International conferences on science, engineering, management, health
+          and allied areas at Academic World Research are the centres for
+          academic and business interaction which makes us a flag bearer in
+          global market of professional event promotion. Detailed review,
+          assessment and user friendly accessibility makes us the trailblazer of
+          academic conferences worldwide.
         </p>
-        <p>Academic World Research is a pin board to find and book mark international conference of your need that suits your academic and professional requirements.</p>
+        <p>
+          Academic World Research is a pin board to find and book mark
+          international conference of your need that suits your academic and
+          professional requirements.
+        </p>
       </div>
 
       <div className="main-content">
@@ -111,7 +120,7 @@ const Home = () => {
           </div>
           <FeaturedOrganizer />
         </div>
-        <div className="right-column">
+        <div className="right-column mt-9">
           <BrowseByCity />
           <BrowseByCountry />
           <BrowseByTopics />

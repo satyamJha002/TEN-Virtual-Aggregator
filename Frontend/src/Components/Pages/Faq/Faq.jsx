@@ -72,7 +72,7 @@ function Faq() {
           {faqs.map((faq, index) => (
             <div key={index} className="border-b border-gray-300 py-3">
               <p
-                className="cursor-pointer text-xl font-semibold flex justify-between items-center"
+                className="cursor-pointer mb-2 text-xl font-semibold flex justify-between items-center"
                 onClick={() => toggleFaq(index)}
               >
                 {faq.question}
@@ -91,7 +91,7 @@ function Faq() {
       <div className="w-full overflow-hidden md:w-96">
         <div className="space-y-4">
           {/* Display headings only on mobile */}
-          <h3 className="text-2xl font-semibold mb-2 block ">Browse By City</h3>
+
           <BrowseByCity />
 
           <hr className="border-t-0 border-b-2 border-gray-300" />
