@@ -8,6 +8,7 @@ import journalRoute from "./routes/journalRoute.js";
 import contactRoute from "./routes/contactRoute.js";
 import eventRoute from "./routes/addEventRoute.js";
 import sciEventsRoute from "./routes/sciEventsRoute.js";
+import adminRoute from "./routes/adminRoute.js"
 
 dotenv.config();
 const app = express();
@@ -36,3 +37,4 @@ app.listen(PORT, () => {
 });
 
 app.use("/api", sciEventsRoute);
+app.use("/api/admin", adminRoute);
