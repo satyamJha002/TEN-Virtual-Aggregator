@@ -126,7 +126,7 @@ const App = () => {
 
   return (
     <>
-    <div className="welcome-section  max-w-6xl my-8 sm:px-10" style={{margin:"3rem auto" }}>
+    <div className="welcome-section max-w-6xl my-8 sm:px-10" style={{margin:"3rem auto" }}>
       <h2 className="border-red border-gray">
       {title}
       </h2>
