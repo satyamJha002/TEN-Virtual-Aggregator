@@ -20,6 +20,8 @@ import Login from "./Components/Admin/Login/Login";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import FirstBlogPost from "./Components/Pages/Blog/Post/FirstBlogPost";
 import SecondBlogPost from "./Components/Pages/Blog/Post/SecondBlogPost";
+import { Categories } from "./Components/Pages/Blog/Categories/Categories";
+import { EducationConferences } from "./Components/Pages/Blog/Categories/EducationConferences";
 
 function App() {
   const location = useLocation();
@@ -44,6 +46,8 @@ function App() {
           path="/blog/guide-to-the-top-medical-conferences"
           element={<SecondBlogPost />}
         />
+        <Route path="/blog/categories/academic-confrence" element={<Categories/>}/>
+        <Route path="/blog/categories/education-conferences" element={<EducationConferences/> } />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
