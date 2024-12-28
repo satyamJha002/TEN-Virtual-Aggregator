@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import useEventsStore from '../../../services/eventsStore';
-import './Events.css';
+import React, { useState, useEffect } from "react";
+import useEventsStore from "../../../services/eventsStore";
+import "./Events.css";
 
 const Events = () => {
   const { events, loading, error, fetchEvents } = useEventsStore();
@@ -10,16 +10,38 @@ const Events = () => {
 
   const getMonthsArray = () => {
     const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const currentMonthIndex = new Date().getMonth();
-    return ["All", ...monthNames.slice(currentMonthIndex).concat(monthNames.slice(0, currentMonthIndex))];
+    return [
+      "All",
+      ...monthNames
+        .slice(currentMonthIndex)
+        .concat(monthNames.slice(0, currentMonthIndex)),
+    ];
   };
 
-  const filteredEvents = selectedMonth === "All" ? events : events.filter(event => event.month === selectedMonth);
+  const filteredEvents =
+    selectedMonth === "All"
+      ? events
+      : events.filter((event) => event.month === selectedMonth);
   const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
-  const getCurrentEvents = () => filteredEvents.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const getCurrentEvents = () =>
+    filteredEvents.slice(
+      (currentPage - 1) * itemsPerPage,
+      currentPage * itemsPerPage
+    );
 
   useEffect(() => {
     fetchEvents();
@@ -62,12 +84,16 @@ const Events = () => {
 
       <div className="scientific-events">
         <div className="header">
-          <h1 className='all-heading border-red border-gray'>Upcoming International Conferences</h1>
+          <h1 className="all-heading border-red border-gray">
+            Upcoming International Conferences
+          </h1>
           <div className="month-navigation" role="tablist">
             {getMonthsArray().map((month) => (
               <button
                 key={month}
-                className={`month-btn ${selectedMonth === month ? "active" : ""}`}
+                className={`month-btn ${
+                  selectedMonth === month ? "active" : ""
+                }`}
                 onClick={() => {
                   setSelectedMonth(month);
                   setCurrentPage(1);
