@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-function MonthYearDropdown({ className }) {
+function MonthYearDropdown({ className, onChange }) {
   const [selectedMonthYear, setSelectedMonthYear] = useState("");
 
   const months = [
@@ -25,10 +25,16 @@ function MonthYearDropdown({ className }) {
     months.map((month) => `${month}-${year}`)
   );
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSelectedMonthYear(value);
+    onChange(value);
+  };
+
   return (
     <select
       value={selectedMonthYear}
-      onChange={(e) => setSelectedMonthYear(e.target.value)}
+      onChange={handleChange}
       className={className}
       style={{ color: "gray", fontSize: "0.9rem" }}
     >

@@ -49,11 +49,9 @@ const FilterPage = () => {
               {error && <div>{error}</div>}
               {data?.data?.map((event) => (
                 <div className="filter_table_row" key={event._id}>
-                  <div className="filter_date-col">
-                    {new Date(event.startDate).toLocaleDateString()}
-                  </div>
-                  <div className="filter_name-col">{event.eventName}</div>
-                  <div className="filter_venue-col">{event.city}</div>
+                  <div className="filter_date-col">{event.date}</div>
+                  <div className="filter_name-col">{event.name}</div>
+                  <div className="filter_venue-col">{event.venue}</div>
                 </div>
               ))}
             </div>

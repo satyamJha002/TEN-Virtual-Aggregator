@@ -3,6 +3,8 @@ import { useMemo } from "react";
 import Select from "react-select";
 import countryList from "react-select-country-list";
 import MonthYearDropdown from "./Month";
+import useFetch from "../../../customAPI/useFetch";
+import { toast } from "react-toastify";
 
 const customStyles = {
   control: (provided, state) => ({
@@ -83,21 +85,229 @@ const eventTopics = [
 ];
 
 function Form() {
-  const [value, setValue] = useState("");
+  const [formData, setFormData] = useState({
+    eventName: "",
+    eventTitle: "",
+    eventType: "",
+    eventTopic: "",
+    country: "",
+    state: "",
+    city: "",
+    venueAddress: "",
+    organizingSociety: "",
+    contactPerson: "",
+    contactNumber: "",
+    emailAddress: "",
+    websiteAddress: "",
+    eventMonthYear: "",
+    startDate: "",
+    endDate: "",
+    submissionDeadline: "",
+    registrationDeadline: "",
+    abstracts: "",
+    eventDescription: "",
+  });
+
+  const {
+    eventName,
+    eventTitle,
+    eventType,
+    eventTopic,
+    country,
+    state,
+    city,
+    venueAddress,
+    organizingSociety,
+    contactPerson,
+    contactNumber,
+    emailAddress,
+    websiteAddress,
+    eventMonthYear,
+    startDate,
+    endDate,
+    submissionDeadline,
+    registrationDeadline,
+    abstracts,
+    eventDescription,
+  } = formData;
+
   const options = useMemo(() => countryList().getData(), []);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [submissionDate, setSubmissionDate] = useState(null);
-  const [registrationDate, setRegistrationDate] = useState(null);
-  const [eventType, setEventType] = useState("");
-  const [eventTopic, setEventTopic] = useState("");
-  function changeHandler(value) {
-    setValue(value);
-  }
+
+  const handleInputChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const handleEventTypeChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      eventType: e.target.value,
+    }));
+  };
+
+  const handleEventTopicChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      eventTopic: e.target.value,
+    }));
+  };
+
+  const handleCountryChange = (selectedOption) => {
+    console.log(selectedOption.label);
+    setFormData((prev) => ({
+      ...prev,
+      country: selectedOption ? selectedOption?.label : "",
+    }));
+  };
+  const handleMonthYearChange = (selectedMonthYear) => {
+    setFormData((prev) => ({
+      ...prev,
+      eventMonthYear: selectedMonthYear,
+    }));
+  };
+
+  const handleStartDateChange = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      startDate: value,
+    }));
+  };
+
+  const handleEndDateChange = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      endDate: value,
+    }));
+  };
+
+  const handleSetSubmissionDate = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      submissionDeadline: value,
+    }));
+  };
+
+  const handleRegistrationDate = (value) => {
+    setFormData((prev) => ({
+      ...prev,
+      registrationDeadline: value,
+    }));
+  };
+
+  const { fetchData, loading, error } = useFetch(
+    "http://localhost:3000/api/addevent",
+    "POST"
+  );
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const requiredFields = [
+      eventName,
+      eventTitle,
+      eventType,
+      eventTopic,
+      country,
+      state,
+      city,
+      venueAddress,
+      organizingSociety,
+      contactPerson,
+      contactNumber,
+      emailAddress,
+      websiteAddress,
+      eventMonthYear,
+      startDate,
+      endDate,
+      submissionDeadline,
+      registrationDeadline,
+      abstracts,
+      eventDescription,
+    ];
+
+    console.log(formData);
+
+    for (let field of requiredFields) {
+      if (!field) {
+        toast.error("All fields are required!");
+        return;
+      }
+    }
+
+    const payload = {
+      eventName,
+      eventTitle,
+      eventType,
+      eventTopic,
+      country,
+      state,
+      city,
+      venueAddress,
+      organizingSociety,
+      contactPerson,
+      contactNumber,
+      emailAddress,
+      websiteAddress,
+      eventMonthYear,
+      startDate,
+      endDate,
+      submissionDeadline,
+      registrationDeadline,
+      abstracts,
+      eventDescription,
+    };
+
+    try {
+      const response = await fetchData(payload);
+      if (response.success) {
+        toast.success(
+          "Your event data has been sent to the admin, he will be contact you."
+        );
+        setFormData({
+          eventName: "",
+          eventTitle: "",
+          eventType: "",
+          eventTopic: "",
+          country: "",
+          state: "",
+          city: "",
+          venueAddress: "",
+          organizingSociety: "",
+          contactPerson: "",
+          contactNumber: "",
+          emailAddress: "",
+          websiteAddress: "",
+          eventMonthYear: "",
+          startDate: "",
+          endDate: "",
+          submissionDeadline: "",
+          registrationDeadline: "",
+          abstracts: "",
+          eventDescription: "",
+        });
+      } else {
+        toast.error(response.error || "An unexpected error occured");
+      }
+    } catch (error) {
+      toast.error(
+        "An error occurred while sending your event data. Please try again."
+      );
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div>
-      <form className="px-4">
+      <form className="px-4" onSubmit={handleSubmit}>
+        {loading && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            LOADING....
+          </div>
+        )}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            {error}
+          </div>
+        )}
         <h3 className="text-2xl relative mb-8 border-red border-gray">
           Add Events
         </h3>
@@ -106,12 +316,14 @@ function Form() {
         <hr className="mb-6" />
         {/* Event Name */}
         <div className="mb-4">
-          <label htmlFor="event-name" className="block text-md text-gray mb-1">
+          <label htmlFor="eventName" className="block text-md text-gray mb-1">
             Event Name :
           </label>
           <input
             type="text"
-            id="event-name"
+            id="eventName"
+            value={eventName}
+            onChange={handleInputChange}
             placeholder="Enter Event Name"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900"
@@ -119,12 +331,14 @@ function Form() {
         </div>
         {/* Event Title */}
         <div className="mb-4">
-          <label htmlFor="event-title" className="block text-md text-gray mb-1">
+          <label htmlFor="eventTitle" className="block text-md text-gray mb-1">
             Event Title :
           </label>
           <input
             type="text"
-            id="event-title"
+            id="eventTitle"
+            value={eventTitle}
+            onChange={handleInputChange}
             placeholder="Enter Title"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -132,16 +346,16 @@ function Form() {
         </div>
         {/* Event Type */}
         <div className="mb-4">
-          <label htmlFor="event-type" className="block text-md mb-2 text-gray">
+          <label htmlFor="eventType" className="block text-md mb-2 text-gray">
             Event Type :
           </label>
           <select
             name="eventType"
-            id="event-type"
+            id="eventType"
             className="custom-select"
             style={{ color: "gray", fontSize: "0.9rem" }}
             value={eventType}
-            onChange={(e) => setEventType(e.target.value)}
+            onChange={handleEventTypeChange}
           >
             <option value="">Select Event Type</option>
             {eventTypes.map((event, index) => (
@@ -154,16 +368,16 @@ function Form() {
 
         {/* Event Topic */}
         <div className="mb-4">
-          <label htmlFor="event-topic" className="block text-md mb-2 text-gray">
+          <label htmlFor="eventTopic" className="block text-md mb-2 text-gray">
             Event Topics :
           </label>
           <select
             name="eventTopic"
-            id="event-topic"
+            id="eventTopic"
             className="custom-select text-gray-900 appearance-none"
             style={{ color: "gray", fontSize: "0.9rem" }}
             value={eventTopic}
-            onChange={(e) => setEventTopic(e.target.value)}
+            onChange={handleEventTopicChange}
           >
             <option value="" disabled>
               Select Event Topic
@@ -180,11 +394,12 @@ function Form() {
         <hr className="mb-6" />
         {/* Country */}
         <div className="mb-4">
-          <label className="block text-md mb-2 text-gray">Country :</label>
+          <label className="block text-md mb-2 text-gray">Country:</label>
           <Select
             options={options}
-            value={value}
-            onChange={changeHandler}
+            id="country"
+            value={options.find((option) => option.label === country)}
+            onChange={handleCountryChange}
             styles={customStyles}
             placeholder="Select an option"
           />
@@ -197,6 +412,8 @@ function Form() {
           <input
             type="text"
             id="state"
+            value={state}
+            onChange={handleInputChange}
             placeholder="Enter State"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -210,6 +427,8 @@ function Form() {
           <input
             type="text"
             id="city"
+            value={city}
+            onChange={handleInputChange}
             placeholder="Enter The City"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900"
@@ -218,14 +437,16 @@ function Form() {
         {/* Venue Address */}
         <div className="mb-4">
           <label
-            htmlFor="venue-address"
+            htmlFor="venueAddress"
             className="block text-md mb-2 text-gray"
           >
             Venue Address :
           </label>
           <input
             type="text"
-            id="venue-address"
+            id="venueAddress"
+            value={venueAddress}
+            onChange={handleInputChange}
             placeholder="Enter Venue Address"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -237,14 +458,16 @@ function Form() {
         {/* Organizing Society */}
         <div className="mb-4">
           <label
-            htmlFor="organization"
+            htmlFor="organizingSociety"
             className="block text-md mb-2 text-gray"
           >
             Organizing Society :
           </label>
           <input
             type="text"
-            id="organization"
+            id="organizingSociety"
+            value={organizingSociety}
+            onChange={handleInputChange}
             placeholder="Enter Your Organization"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -253,14 +476,16 @@ function Form() {
         {/* Contact Person */}
         <div className="mb-4">
           <label
-            htmlFor="contact-person"
+            htmlFor="contactPerson"
             className="block text-md mb-2 text-gray"
           >
             Contact Person :
           </label>
           <input
             type="text"
-            id="contact-person"
+            id="contactPerson"
+            value={contactPerson}
+            onChange={handleInputChange}
             placeholder="Enter Name of Contact Person"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -269,17 +494,17 @@ function Form() {
         {/* Contact Number */}
         <div className="mb-4">
           <label
-            htmlFor="contact-number"
+            htmlFor="contactNumber"
             className="block text-md mb-2 text-gray"
           >
             Contact Number :
           </label>
           <input
-            type="tel"
-            id="contact-number"
+            type="text"
+            id="contactNumber"
+            value={contactNumber}
+            onChange={handleInputChange}
             placeholder="Enter Contact Number"
-            inputMode="tel"
-            pattern="[0-9]{10}"
             required
             maxLength="10"
             style={{ borderRadius: "4px" }}
@@ -289,12 +514,17 @@ function Form() {
         </div>
         {/* Email Address */}
         <div className="mb-4">
-          <label htmlFor="email" className="block text-md mb-2 text-gray">
+          <label
+            htmlFor="emailAddress"
+            className="block text-md mb-2 text-gray"
+          >
             Email Address :
           </label>
           <input
             type="email"
-            id="email"
+            id="emailAddress"
+            value={emailAddress}
+            onChange={handleInputChange}
             placeholder="Enter Email Address"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -302,12 +532,17 @@ function Form() {
         </div>
         {/* Website Address */}
         <div className="mb-4">
-          <label htmlFor="website" className="block text-md mb-2 text-gray">
+          <label
+            htmlFor="websiteAddress"
+            className="block text-md mb-2 text-gray"
+          >
             Website Address :
           </label>
           <input
             type="text"
-            id="website"
+            id="websiteAddress"
+            value={websiteAddress}
+            onChange={handleInputChange}
             placeholder="Enter URL of Website"
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
@@ -319,33 +554,40 @@ function Form() {
         {/* Event Month-Year */}
         <div className="mb-4">
           <label className="block text-md mb-2">Event Month-Year :</label>
-          <MonthYearDropdown className="custom-select" />
+          <MonthYearDropdown
+            id="eventMonthYear"
+            value={eventMonthYear}
+            onChange={handleMonthYearChange}
+            className="custom-select"
+          />
         </div>
         {/* Start Date */}
         <div className="mb-4">
-          <label htmlFor="start-date" className="block text-md mb-2 text-gray">
+          <label htmlFor="startDate" className="block text-md mb-2 text-gray">
             Start Date :
           </label>
           <input
             type="date"
-            id="start-date"
+            id="startDate"
+            value={startDate}
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900"
-            onChange={(e) => setStartDate(e.target.value)}
+            onChange={(e) => handleStartDateChange(e.target.value)}
             placeholder="dd-mm-yyyy"
           />
         </div>
         {/* End Date */}
         <div className="mb-4">
-          <label htmlFor="end-date" className="block text-md mb-2 text-gray">
+          <label htmlFor="endDate" className="block text-md mb-2 text-gray">
             End Date :
           </label>
           <input
             type="date"
-            id="end-date"
+            id="endDate"
+            value={endDate}
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900"
-            onChange={(e) => setEndDate(e.target.value)}
+            onChange={(e) => handleEndDateChange(e.target.value)}
             placeholder="dd-mm-yyyy"
           />
         </div>
@@ -359,10 +601,11 @@ function Form() {
           </label>
           <input
             type="date"
-            id="submission-deadline"
+            id="submissionDeadline"
+            value={submissionDeadline}
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900"
-            onChange={(e) => setSubmissionDate(e.target.value)}
+            onChange={(e) => handleSetSubmissionDate(e.target.value)}
           />
         </div>
         {/* Registration Deadline */}
@@ -375,19 +618,22 @@ function Form() {
           </label>
           <input
             type="date"
-            id="registration-deadline"
+            id="registrationDeadline"
+            value={registrationDeadline}
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200 placeholder-gray text-gray-900 "
-            onChange={(e) => setRegistrationDate(e.target.value)}
+            onChange={(e) => handleRegistrationDate(e.target.value)}
           />
         </div>
         {/* Abstraction */}
         <div className="mb-4">
-          <label htmlFor="abstraction" className="block text-md mb-2 text-gray">
+          <label htmlFor="abstracts" className="block text-md mb-2 text-gray">
             Abstraction :
           </label>
           <textarea
-            id="abstraction"
+            id="abstracts"
+            value={abstracts}
+            onChange={handleInputChange}
             style={{ borderRadius: "4px" }}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200"
           />
@@ -395,19 +641,22 @@ function Form() {
         {/* Event Description */}
         <div className="mb-4">
           <label
-            htmlFor="event-description"
+            htmlFor="eventDescription"
             className="block text-md mb-2 text-gray"
           >
             Event Description :
           </label>
           <textarea
-            id="event-description"
+            id="eventDescription"
+            value={eventDescription}
+            onChange={handleInputChange}
             className="w-full text-sm border border-gray-300 p-2 focus:outline-none focus:ring focus:ring-indigo-200"
             style={{ borderRadius: "4px" }}
           />
         </div>
         <div className="w-100 text-center">
           <button
+            type="submit"
             className="bg-red-800 text-white text-md font-bold px-4 m-4 py-2"
             style={{ borderRadius: "4px" }}
           >

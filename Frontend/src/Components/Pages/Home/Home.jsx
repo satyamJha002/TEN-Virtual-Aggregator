@@ -59,7 +59,7 @@ const Home = () => {
       </div>
 
       {/* Welcome Section */}
-      <div className="welcome-section" style={{margin: "3rem auto"}}>
+      <div className="welcome-section" style={{ margin: "3rem auto" }}>
         <h2 className="border-red py-4 border-gray">
           Welcome To Academic World Research 2025
         </h2>
