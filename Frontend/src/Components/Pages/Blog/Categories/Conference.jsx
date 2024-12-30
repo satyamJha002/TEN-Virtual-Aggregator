@@ -17,28 +17,28 @@ const blogs = [
       filedUnder: "Upcoming Education Conferences 2025",
       route: "/blog/a-comprehensive-guide-to-the-upcoming-conferences",
     },
-    // {
-    //   id: 2,
-    //   title: "Guide To The Top Medical Conferences In 2025",
-    //   date: "December 10, 2024",
-    //   author: "admin",
-    //   image:
-    //     "https://academicworldresearch.org/blog/wp-content/uploads/2024/12/banner-1600-Medical-16-12-24-01-1-768x432.webp",
-    //   description:
-    //     "Medical conferences play a crucial role in sharing knowledge and networking among professionals, policymakers, and researchers...",
-    //   category: "Medical Conference, Healthcare",
-    //   filedUnder: "Top Medical Conferences 2025",
-    //   route: "/blog/guide-to-the-top-medical-conferences",
-    // },
+    {
+      id: 2,
+      title: "Guide To The Top Medical Conferences In 2025",
+      date: "December 10, 2024",
+      author: "admin",
+      image:
+        "https://academicworldresearch.org/blog/wp-content/uploads/2024/12/banner-1600-Medical-16-12-24-01-1-768x432.webp",
+      description:
+        "Medical conferences play a crucial role in sharing knowledge and networking among professionals, policymakers, and researchers...",
+      category: "Medical Conference, Healthcare",
+      filedUnder: "Top Medical Conferences 2025",
+      route: "/blog/guide-to-the-top-medical-conferences",
+    },
   ];
-export const EducationConferences=()=>{
+export const Conference=()=>{
     const navigate=useNavigate()
 
     return(
         <>
         <div className="bg-[#646464]">
             <h1 className="px-40 py-[3%] text-4xl max-sm:text-center max-sm:px-4 max-sm:text-2xl text-white mb-0 font-light mx-auto">
-                Categories..Education Conference</h1>
+                Categories..Conference</h1>
             </div>
 
              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[2fr,1fr] gap-8 my-8 px-4">

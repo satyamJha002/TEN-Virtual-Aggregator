@@ -35,7 +35,7 @@ const BlogCard = ({
         {content}
       </Link>
       <Link
-        to="/blog"
+        to="/blog/categories/conference"
         className="text-red-800 hover:text-red-900 block font-medium text-lg leading-relaxed"
       >
         {content3}

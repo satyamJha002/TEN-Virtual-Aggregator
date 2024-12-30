@@ -7,7 +7,7 @@ const FirstBlogPost = () => {
   return (
     <>
       <div className="bg-[#646464]">
-        <h2 className="px-4 py-[3%] text-4xl max-sm:text-center text-white mb-0 font-light mx-auto">
+        <h2 className="px-40 py-[3%] text-4xl max-sm:text-center max-sm:px-4 text-white mb-0 font-light mx-auto">
           Posts
         </h2>
       </div>

@@ -22,6 +22,7 @@ import FirstBlogPost from "./Components/Pages/Blog/Post/FirstBlogPost";
 import SecondBlogPost from "./Components/Pages/Blog/Post/SecondBlogPost";
 import { Categories } from "./Components/Pages/Blog/Categories/Categories";
 import { EducationConferences } from "./Components/Pages/Blog/Categories/EducationConferences";
+import { Conference } from "./Components/Pages/Blog/Categories/Conference";
 
 function App() {
   const location = useLocation();
@@ -54,6 +55,7 @@ function App() {
           path="/blog/categories/education-conferences"
           element={<EducationConferences />}
         />
+        <Route path="/blog/categories/conference" element={<Conference />} />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
