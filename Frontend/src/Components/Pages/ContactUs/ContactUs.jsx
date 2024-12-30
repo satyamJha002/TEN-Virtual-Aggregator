@@ -167,10 +167,10 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <div className="p-6 max-w-6xl mx-auto bg-white rounded-md flex items-start relative">
+    <div className="p-6 max-w-6xl mx-auto contact-page bg-white rounded-md flex items-start relative">
       {/* Filter Buttons - Mobile */}
       {!isDesktop && (
-        <div className="w-full flex flex-col items-start mb-4 md:hidden">
+        <div className="w-full flex flex-wrap flex-col items-start mb-4 md:hidden">
           {/* Header */}
           <h3 className="m-w-xl mx-auto font-bold text-xl">
             Browse By
@@ -225,7 +225,7 @@ const ContactUs = () => {
         </div>
       )}
 
-      <div className="contact-form border shadow-md" style={{borderRadius: "4px"}}>
+      <div className="contact-form border shadow-md" style={{borderRadius: "4px", width: "100%"}}>
         <h2  className="text-2xl cursor-pointer border-red border-gray items-center mb-4">Contact Us</h2>
         <p>Please get in touch for comments or requests.</p>
         {loading && <div>Loading...</div>}

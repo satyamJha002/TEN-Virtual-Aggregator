@@ -159,6 +159,10 @@
     justify-content: space-between;
   }
 
+  .contact-form{
+    width: 100%;
+  }
+
   .mobile-view {
     position: static; /* Disable floating in desktop view */
     background-color: transparent; /* Remove background for desktop */
