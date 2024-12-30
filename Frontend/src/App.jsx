@@ -13,7 +13,7 @@ import Blog from "./Components/Pages/Blog/Blog";
 import Home from "./Components/Pages/Home/Home";
 import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
-// import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
+import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./Components/Admin/Login/Login";
@@ -59,7 +59,7 @@ function App() {
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/faq" element={<Faq />} />
-        {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/admin/login" element={<Login />} />
         <Route
           path="/admin"

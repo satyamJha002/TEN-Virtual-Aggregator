@@ -5,52 +5,48 @@ import BrowseByTopics from "../AddEvent/BrowseByTopic";
 
 const faqs = [
   {
-    question: "How I can add an event to academicworldresearch.org?",
+    question: "How can I add an event to TEN Virtual Aggregator?",
     answer:
-      "To add an event to the academicworldresearch.org listing, please visit the home page and press on Add Event. Ordinary listing of any event is completely free.",
+      "Simply visit our homepage and click the 'Add Event' button. Basic event listing is completely free of charge.",
   },
   {
-    question: "What I need to provide during the Add Event?",
+    question: "What information do I need to provide when adding an event?",
     answer:
-      "You need to provide your Event details like Date, Place, Deadline for paper submission, Type of event, event online URL, Contact person, etc.",
+      "You'll need to provide essential event details including the date, venue, paper submission deadline, event type, website URL, and contact information.",
   },
   {
-    question:
-      "Is there any charge for listing the conference in academicworldresearch.org website?",
-    answer: "No!!! There is absolutely no charge for listing the events.",
+    question: "Is there a fee for listing conferences on TEN Virtual Aggregator?",
+    answer: "Not at all! We offer free basic listings for all events.",
   },
   {
-    question:
-      "How much time will it take to list the event after successfully event addition process?",
+    question: "How long does it take for my event to appear after submission?",
     answer:
-      "Maximum it will take 12hrs for listing the events in academicworldresearch.org website.",
+      "We aim to review and list all events within 12 hours of submission.",
   },
   {
-    question:
-      "Can I modify the information related to an event at any time of listing?",
+    question: "Can I edit my event information after it's listed?",
     answer:
-      "Yes, you can modify the Information by logging into the event panel in the related event at any time of listing.",
+      "Yes, you can update your event information at any time by logging into your event panel.",
   },
   {
-    question: "Can I promote my Events in academicworldresearch.org?",
+    question: "Are there promotional opportunities for my events?",
     answer:
-      "Yes, you can promote your event. Please mail to info@academicworldresearch.org to know about the different advertisement plans.",
+      "Yes, we offer various promotional packages. Contact us at info@tenvirtualaggregator.com to learn about our advertising options.",
   },
   {
-    question: "How many events can be listed from my organizer account?",
+    question: "Is there a limit to how many events I can list?",
     answer:
-      "Maximum 50 events can be listed on academicworldresearch.org during one year for one Organizer Account.",
+      "Each organizer account can list up to 50 events per year on our platform.",
   },
   {
-    question: "How I can subscribe to academicworldresearch.org?",
+    question: "How do I subscribe to TEN Virtual Aggregator?",
     answer:
-      "Click Subscribe on academicworldresearch.org home page and follow the simple process to subscribe.",
+      "Click the 'Subscribe' button on our homepage and follow the simple registration process.",
   },
   {
-    question:
-      "How academicworldresearch.org will help me to find a conference?",
+    question: "How does TEN Virtual Aggregator help me find relevant conferences?",
     answer:
-      "It will help you to find the most appropriate International/National conference and workshops by knowing your requirements like place, date, topic, last date of registration, etc.",
+      "Our smart search system helps you find the perfect conferences by filtering through location, dates, topics, and registration deadlines to match your specific needs.",
   },
 ];
 
@@ -89,16 +85,12 @@ function Faq() {
       {/* Browse Section */}
       <div className="w-full overflow-hidden md:w-96">
         <div className="space-y-4">
-          {/* Display headings only on mobile */}
-
           <BrowseByCity />
-
           <hr className="border-t-0 border-b-2 border-gray-300" />
           <h3 className="text-2xl font-semibold mb-2 block md:hidden">
             Browse By Country
           </h3>
           <BrowseByCountry />
-
           <hr className="border-t-0 border-b-2 border-gray-300" />
           <h3 className="text-2xl font-semibold mb-2 block md:hidden">
             Browse By Topics

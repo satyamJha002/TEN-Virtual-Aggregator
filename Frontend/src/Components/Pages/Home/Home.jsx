@@ -61,29 +61,25 @@ const Home = () => {
       {/* Welcome Section */}
       <div className="welcome-section" style={{ margin: "3rem auto" }}>
         <h2 className="border-red py-4 border-gray">
-          Welcome To Academic World Research 2025
+          Welcome to TEN Virtual Aggregator 2025
         </h2>
         <p>
-          Academic World Research (AWR) will be the game changer of your life
-          because it is going to give you the latest updates on all the
-          International Conference Alerts 2025. Be ready to get a wealth of
-          information on upcoming conferences in 2025, including deadlines,
-          topics, strategies to choose reputed journals, submission guidelines,
-          and complete support with regard to paper publications. Stay ahead of
-          your competitors with AWR and elevate your academic journey.
+          Looking to stay on top of the latest conferences in your field? TEN Virtual 
+          Aggregator is your go-to platform for discovering the hottest academic events 
+          of 2025. We're here to simplify your conference journey by providing everything 
+          you need - from submission deadlines to publication guidelines. Whether you're 
+          presenting research or expanding your network, we've got you covered.
         </p>
         <p>
-          International conferences on science, engineering, management, health
-          and allied areas at Academic World Research are the centres for
-          academic and business interaction which makes us a flag bearer in
-          global market of professional event promotion. Detailed review,
-          assessment and user friendly accessibility makes us the trailblazer of
-          academic conferences worldwide.
+          We bring together the biggest gatherings in science, technology, healthcare, 
+          business, and more. What sets us apart? Our platform makes it super easy to 
+          find the perfect conference for your needs. Plus, we carefully check each event 
+          to make sure you're getting reliable, quality opportunities to showcase your work.
         </p>
         <p>
-          Academic World Research is a pin board to find and book mark
-          international conference of your need that suits your academic and
-          professional requirements.
+          Think of us as your personal conference assistant - we help you discover, 
+          bookmark, and keep track of events that match your professional interests. 
+          No more endless searching across different websites!
         </p>
       </div>
 
@@ -95,27 +91,24 @@ const Home = () => {
           <div className="welcome-section">
             <h2 className="border-red border-gray">About Us</h2>
             <p>
-              Academic World Research is world's most reliable index of academic
-              activities like international conferences and professional events.
-              If you are looking for a perfect platform to learn and share, AWR
-              is the best gateway to reserve your slot at conferences of your
-              need. Certifying the conferences with verification and their
-              authenticity makes us a trusted partner of academicians and
-              professionals to help them to get notified about upcoming
-              conferences scheduled worldwide.
+              TEN Virtual Aggregator is your trusted guide in the world of academic 
+              conferences. We've built the largest collection of verified professional 
+              events, making it simple for researchers and industry experts to find 
+              their next big opportunity. Our team personally reviews each conference 
+              to ensure you're getting access to legitimate, high-quality events.
             </p>
             <p>
-              International conferences on science, engineering, management,
-              health, and allied areas at Academic World Research are the
-              centers for academic and business interaction, which makes us a
-              flag bearer in the global market of professional event promotion.
-              Detailed review, assessment, and user-friendly accessibility make
-              us the trailblazer of academic conferences worldwide.
+              Why choose us? We're more than just a listing site. We understand that 
+              finding the right conference can be overwhelming, so we've created tools 
+              to help you filter through options based on your field, location, and 
+              schedule. From cutting-edge scientific symposiums to innovative business 
+              forums, we connect you with events that matter in your profession.
             </p>
             <p>
-              Academic World Research is a pinboard to find and bookmark
-              international conferences of your need that suit your academic and
-              professional requirements.
+              Our platform is designed with you in mind - whether you're a seasoned 
+              professor or an emerging professional. Just tell us what you're interested 
+              in, and we'll help you find conferences that align with your goals and 
+              advance your career.
             </p>
           </div>
           <FeaturedOrganizer />
