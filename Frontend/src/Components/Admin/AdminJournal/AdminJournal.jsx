@@ -1,5 +1,5 @@
 import { Edit, Plus, Trash2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./AdmJournal.css";
 import useFetch from "../../../customAPI/useFetch";
 

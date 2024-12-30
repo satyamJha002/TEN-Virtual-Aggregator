@@ -11,9 +11,8 @@
 .featured-section h2 {
   font-size: 1.25rem;
   position: relative;
-  text-align: center;
+  text-align: left;
 }
-
 
 .feature-card {
   background: linear-gradient(135deg, #1e90ff, #4169e1);
@@ -94,7 +93,6 @@
   .feature-events-container {
     max-width: 960px;
   }
-
 }
 
 /* Large laptops and desktops (1200px and up) */

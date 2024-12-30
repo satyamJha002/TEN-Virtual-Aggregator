@@ -36,7 +36,7 @@ export const EducationConferences = () => {
   return (
     <>
       <div className="bg-[#646464]">
-        <h1 className="px-4 py-[3%] text-4xl max-sm:text-center text-white mb-0 font-light mx-auto">
+        <h1 className="px-40 py-[3%] text-4xl max-sm:text-center max-sm:px-4 max-sm:text-2xl text-white mb-0 font-light mx-auto">
           Categories..Education Conference
         </h1>
       </div>
