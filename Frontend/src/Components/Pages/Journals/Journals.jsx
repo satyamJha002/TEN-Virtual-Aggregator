@@ -4,8 +4,6 @@ import "./journal.css";
 import useFetch from "../../../customAPI/useFetch";
 
 function Journals() {
-  const [dataJournals, setDataJournals] = useState(null);
-
   const { fetchData, data, error } = useFetch(
     "https://ten-virtual-aggregator-dcxj.onrender.com/api/alljournals",
     "GET"
@@ -35,7 +33,7 @@ function Journals() {
           {/* flex flex-wrap justify-start gap-8 */}
           {error && <div>Error .... {error}</div>}
 
-          {dataJournals?.journals?.map((journal) => (
+          {data?.journals?.map((journal) => (
             <Card
               key={journal._id}
               title={journal.title}
