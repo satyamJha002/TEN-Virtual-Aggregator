@@ -86,11 +86,15 @@ const App = () => {
     });
 
     try {
-      const response = await axios.post("http://localhost:3000/submit", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://ten-virtual-aggregator-dcxj.onrender.com/submit",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (response.status === 200) {
         alert(response.data.message || "Paper submitted successfully!");

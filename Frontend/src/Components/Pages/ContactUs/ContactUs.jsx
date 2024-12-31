@@ -92,7 +92,7 @@ const ContactUs = () => {
   };
 
   const { fetchData, loading, error } = useFetch(
-    "http://localhost:3000/api/contact",
+    "https://ten-virtual-aggregator-dcxj.onrender.com/api/contact",
     "POST"
   );
 
@@ -225,8 +225,13 @@ const ContactUs = () => {
         </div>
       )}
 
-      <div className="contact-form border shadow-md" style={{borderRadius: "4px", width: "100%"}}>
-        <h2  className="text-2xl cursor-pointer border-red border-gray items-center mb-4">Contact Us</h2>
+      <div
+        className="contact-form border shadow-md"
+        style={{ borderRadius: "4px", width: "100%" }}
+      >
+        <h2 className="text-2xl cursor-pointer border-red border-gray items-center mb-4">
+          Contact Us
+        </h2>
         <p>Please get in touch for comments or requests.</p>
         {loading && <div>Loading...</div>}
         {error && <div className="text-red-700">Error: {error}</div>}

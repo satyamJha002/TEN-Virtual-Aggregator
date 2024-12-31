@@ -16,16 +16,16 @@ const AdminJournal = () => {
   const { title, ISSN } = formData;
 
   const { fetchData, data, loading, error } = useFetch(
-    "http://localhost:3000/api/alljournals"
+    "https://ten-virtual-aggregator-dcxj.onrender.com/api/alljournals"
   );
 
   const { fetchData: fetchUpdateData } = useFetch(
-    `http://localhost:3000/api/updatejournal/${selectedOne}`,
+    `https://ten-virtual-aggregator-dcxj.onrender.com/api/updatejournal/${selectedOne}`,
     "PUT"
   );
 
   const { fetchData: fetchNewData } = useFetch(
-    `http://localhost:3000/api/newjournal`,
+    `https://ten-virtual-aggregator-dcxj.onrender.com/api/newjournal`,
     "POST"
   );
 
@@ -63,7 +63,7 @@ const AdminJournal = () => {
   };
 
   const { fetchData: fetchDelete } = useFetch(
-    `http://localhost:3000/api/deletejournal`,
+    `https://ten-virtual-aggregator-dcxj.onrender.com/api/deletejournal`,
     "DELETE"
   );
 

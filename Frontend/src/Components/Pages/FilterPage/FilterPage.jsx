@@ -14,7 +14,7 @@ const FilterPage = () => {
   const dateFilter = queryParams.get("dateFilter");
 
   const { fetchData, data, loading, error, setParams } = useFetch(
-    "http://localhost:3000/api/events/search",
+    "https://ten-virtual-aggregator-dcxj.onrender.com/api/events/search",
     "GET",
     { query, location: locationParam, dateFilter }
   );

@@ -7,7 +7,7 @@ function Journals() {
   const [dataJournals, setDataJournals] = useState(null);
 
   const { fetchData, data, error } = useFetch(
-    "http://localhost:3000/api/alljournals",
+    "https://ten-virtual-aggregator-dcxj.onrender.com/api/alljournals",
     "GET"
   );
 
