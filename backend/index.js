@@ -8,7 +8,7 @@ import journalRoute from "./routes/journalRoute.js";
 import contactRoute from "./routes/contactRoute.js";
 import eventRoute from "./routes/addEventRoute.js";
 import sciEventsRoute from "./routes/sciEventsRoute.js";
-import adminRoute from "./routes/adminRoute.js"
+import adminRoute from "./routes/adminRoute.js";
 
 dotenv.config();
 const app = express();
@@ -16,7 +16,21 @@ const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+const allowedOrigins = ["https://ten-virtual-aggregator-xi.vercel.app"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use("/uploads", express.static("uploads"));
 
 connectToDb(process.env.MONGO_URI);
