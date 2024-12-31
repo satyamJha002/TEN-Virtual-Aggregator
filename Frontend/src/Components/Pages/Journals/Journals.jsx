@@ -12,18 +12,21 @@ function Journals() {
   );
 
   useEffect(() => {
-    if (data) {
-      setDataJournals(data);
-    }
     fetchData();
-  }, [data]);
+  }, []);
 
   return (
     <div style={{ height: "100%" }}>
       <div className="Journals mt-8 " style={{ padding: "1rem" }}>
-        <h1 className="all-heading max-w-6xl mx-auto border-red border-gray" style={{marginBottom: "0"}}> Top Journals with Impact Factors </h1>
+        <h1
+          className="all-heading max-w-6xl mx-auto border-red border-gray"
+          style={{ marginBottom: "0" }}
+        >
+          {" "}
+          Top Journals with Impact Factors{" "}
+        </h1>
         <div className="text-center w-100 mt-8">
-        <button className=" tablinks">ACTIVE QUALITY JOURNALS</button>
+          <button className=" tablinks">ACTIVE QUALITY JOURNALS</button>
         </div>
         <h3>SCOPUS INDEXED JOURNALS</h3>
       </div>
