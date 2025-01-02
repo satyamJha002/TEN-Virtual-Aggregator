@@ -14,30 +14,28 @@ export const AuthProvider = ({ children }) => {
     if (token && adminData) {
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setAdmin(JSON.parse(adminData));
-      checkAuthStatus();
+      setLoading(false);
     } else {
       setLoading(false);
     }
 
-    const refreshInterval = setInterval(checkAuthStatus, 25 * 60 * 1000); 
-
+    const refreshInterval = setInterval(refreshToken, 25 * 60 * 1000);
     return () => clearInterval(refreshInterval);
   }, []);
 
-  const checkAuthStatus = async () => {
+  const refreshToken = async () => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) return;
+
     try {
-      const response = await api.get('/admin');
-      setAdmin(response.data);
-      localStorage.setItem('adminData', JSON.stringify(response.data));
+      const response = await api.post('/admin/refresh-token');
+      localStorage.setItem('adminToken', response.data.token);
+      api.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
     } catch (error) {
-      console.error('Auth check failed:', error);
+      console.error('Token refresh failed:', error);
       if (error.response?.status === 401) {
-        localStorage.removeItem('adminToken');
-        localStorage.removeItem('adminData');
-        setAdmin(null);
+        logout();
       }
-    } finally {
-      setLoading(false);
     }
   };
 

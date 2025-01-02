@@ -7,6 +7,7 @@ const BlogCard = ({
   content2,
   content3,
   content4,
+  content5,
 }) => {
   return (
     <div
@@ -45,6 +46,14 @@ const BlogCard = ({
         className="text-red-800 hover:text-red-900 block font-medium text-lg leading-relaxed"
       >
         {content4}
+
+      </Link>
+      <Link
+        to="/blog/categories/AllConferenceAlert"
+        className="text-red-800 hover:text-red-900 block font-medium text-lg leading-relaxed"
+      >
+        {content5}
+        
       </Link>
     </div>
   );
