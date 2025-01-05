@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useEventsStore from "../../../services/eventsStore";
 import "./Events.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Events = () => {
   const { events, loading, error, fetchEvents } = useEventsStore();
@@ -23,6 +24,7 @@ const Events = () => {
       "November",
       "December",
     ];
+
     const currentMonthIndex = new Date().getMonth();
     return [
       "All",
@@ -31,6 +33,8 @@ const Events = () => {
         .concat(monthNames.slice(0, currentMonthIndex)),
     ];
   };
+
+  const navigate = useNavigate();
 
   const filteredEvents =
     selectedMonth === "All"
@@ -117,7 +121,9 @@ const Events = () => {
           {getCurrentEvents().map((event, index) => (
             <div key={event._id || index} className="table-row">
               <div className="date-col">{event.date}</div>
-              <div className="name-col">{event.name}</div>
+              <Link to={`/eventdetails/${event._id}`} state={{ event }}>
+                <div className="name-col">{event.name}</div>
+              </Link>
               <div className="venue-col">{event.venue}</div>
             </div>
           ))}
