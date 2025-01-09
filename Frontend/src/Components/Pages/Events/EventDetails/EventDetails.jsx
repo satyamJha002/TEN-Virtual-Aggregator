@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PaperSubmission from "./SidebarNav/PaperSubmission";
 import Agenda from "./SidebarNav/Agenda";
 import ConferenceBrochure from "./SidebarNav/ConferenceBrochure";
@@ -42,6 +42,9 @@ const EventDetails = () => {
 
   const location = useLocation();
   const { event } = location.state || {};
+  let name = event.name;
+  let date = event.date;
+  let eventlocation = event.venue;
 
   const venue = event.venue.split(",");
 
@@ -59,12 +62,12 @@ const EventDetails = () => {
         </div>
         <div className="mt-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold text-orange-400 mb-4">
-            {event.name}
+            {name}
           </h1>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-white">
             <div className="flex items-center">
               <span className="text-orange-400 mr-2">📅</span>
-              <span>{event.date}</span>
+              <span>{date}</span>
             </div>
             <div className="flex items-center">
               <span className="text-orange-400 mr-2">📍</span>
@@ -76,9 +79,11 @@ const EventDetails = () => {
               isSticky ? "invisible" : "visible"
             }`}
           >
-            <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded">
-              Attend
-            </button>
+            <Link to="/research" state={{ name, date, eventlocation }}>
+              <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded">
+                Attend
+              </button>
+            </Link>
             <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center">
               Add to Calender <span className="ml-2">+</span>
             </button>
@@ -96,9 +101,11 @@ const EventDetails = () => {
         `}
         >
           <div className="flex justify-center gap-4">
-            <button className="bg-red-900 hover:bg-red-800 text-white px-6  rounded">
-              Attend
-            </button>
+            <Link to="/research" state={{ name, date, eventlocation }}>
+              <button className="bg-red-900 hover:bg-red-800 text-white px-6  rounded">
+                Attend
+              </button>
+            </Link>
             <button className="bg-red-900 hover:bg-red-800 text-white px-6  rounded flex items-center">
               Add to Calender <span className="ml-2">+</span>
             </button>

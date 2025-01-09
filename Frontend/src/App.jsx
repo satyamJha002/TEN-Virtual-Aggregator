@@ -25,6 +25,7 @@ import { EducationConferences } from "./Components/Pages/Blog/Categories/Educati
 import { Conference } from "./Components/Pages/Blog/Categories/Conference";
 import { AllConferenceAlert } from "./Components/Pages/Blog/Categories/AllConferenceAlert";
 import EventDetails from "./Components/Pages/Events/EventDetails/EventDetails";
+import Research from "./Components/Pages/Research/Research";
 
 function App() {
   const location = useLocation();
@@ -66,6 +67,7 @@ function App() {
         <Route path="/ScientificEvents" element={<Events />} />
         <Route path="/eventdetails/:id" element={<EventDetails />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/research" element={<Research />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/admin/login" element={<Login />} />
         <Route
