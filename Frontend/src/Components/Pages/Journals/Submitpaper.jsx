@@ -5,7 +5,8 @@ import { useLocation } from "react-router-dom";
 const App = () => {
   const fileInputRef = useRef(null); // Reference for the file input
   const location = useLocation();
-  const { title } = location.state || {};
+  const { title, name } = location.state || {};
+
   const [formData, setFormData] = useState({
     authorName: "",
     coAuthors: [""],
@@ -134,7 +135,9 @@ const App = () => {
         className="welcome-section max-w-6xl my-8 sm:px-10"
         style={{ margin: "3rem auto" }}
       >
-        <h2 className="border-red border-gray">{title}</h2>
+        <h2 className="border-red border-gray">
+          {location.state?.title || location.state?.name || "Submit Paper"}
+        </h2>
       </div>
       <div className="max-w-4xl mx-auto mb-28 p-8 bg-gray-50 rounded-lg shadow-lg mx-4">
         <h1 className="text-3xl font-semibold text-center text-[#80011f] mb-6">
@@ -235,7 +238,7 @@ const App = () => {
             <input
               className="block w-full p-3 border rounded-md focus:ring-2 focus:ring-orange-500"
               type="text"
-              value={title}
+              value={location.state?.title || location.state?.name || ""}
               readOnly
             />
           </div>

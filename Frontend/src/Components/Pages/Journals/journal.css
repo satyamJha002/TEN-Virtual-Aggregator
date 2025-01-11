@@ -1,110 +1,111 @@
-section{
-    margin: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+section {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-
-.Journals h3{
-    color: #d22f1e;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.3rem;
+.Journals h3 {
+  color: #d22f1e;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
-.tablinks{
-    background-color: #80011f;
-    border-radius: 4px;
-    margin: 0.5rem 0;
-    color: white;
-    padding: 0.5rem 1rem;
-    margin-bottom: 10px;
-    transition: 0.3s;
-    font-size: 0.8rem;
+.tablinks {
+  background-color: #80011f;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  font-size: 0.8rem;
 }
 
-.card{
-    border: 1px solid #ccc;
-    margin-bottom: 25px;
-    padding: 1rem;
-    box-shadow: 0px 0 9px #ff0000;
+.card {
+  border: 1px solid #ccc;
+  margin-bottom: 25px;
+  padding: 1rem;
+  box-shadow: 0px 0 9px #ff0000;
 }
 
-.journal-btn{
-    background: #80011f;
-    color: #fff !important;
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-weight: 600;
-    margin: 10px 0;
+.journal-btn {
+  background: #80011f;
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: 600;
+  margin: 10px 0;
 }
 
 .row h5 {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #80011f;
-    height: 4rem;
-    align-content: center;
-    margin: 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: left;
+  color: #80011f;
+  height: 4rem;
+  align-content: center;
+  margin: 0;
 }
 
-.row strong{
-    color: #27a4ba;
+.row strong {
+  color: #27a4ba;
 }
 
-.topofrow{
-    margin-bottom: 2rem;
+.topofrow {
+  margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 1306px) and (min-width:1028px) {
-    .card {
-        width: auto;
-    }
+@media screen and (max-width: 1306px) and (min-width: 1028px) {
+  .card {
+    width: auto;
+  }
 }
 
-
-@media screen and (max-width: 1024px) and (min-width:769px) {
-    .card {
-        width: auto;
-    }
+@media screen and (max-width: 1024px) and (min-width: 769px) {
+  .card {
+    width: auto;
+  }
 }
 
+@media screen and (max-width: 768px) and (min-width: 426px) {
+  .card {
+    width: auto;
+    margin-right: 4px;
+  }
 
+  .tablinks {
+    font-size: 15px;
+  }
 
-@media screen and (max-width: 768px) and (min-width:426px) {
-    .card {
-        width: auto;
-        margin-right: 4px;
-    }
+  .Journals h1 {
+    font-size: 1.3rem;
+  }
 
-    .tablinks {
-        font-size: 15px;
-    }
-
-    .Journals h1 {
-        font-size: 1.3rem;
-    }
-
-    .journal-btn {
-        font-size: 0.9rem;
-    }
+  .journal-btn {
+    font-size: 0.9rem;
+  }
 }
 
-@media screen and (max-width: 720px) and (min-width:320px) {
-    .card {
-        font-size: 0.8rem;
-        width: 100%;
-    }
+@media screen and (max-width: 720px) and (min-width: 320px) {
+  .card {
+    font-size: 0.8rem;
+    width: 100%;
+  }
 
-    .Journals h1 {
-        font-size: 1.3rem;
-    }
+  .row h5 {
+    font-size: 1.2rem;
+  }
 
-    .tablinks {
-        font-size: 13px;
-    }
+  .Journals h1 {
+    font-size: 1.3rem;
+  }
 
-    .journal-btn {
-        font-size: 0.8rem;
-    }
+  .tablinks {
+    font-size: 13px;
+  }
+
+  .journal-btn {
+    font-size: 0.8rem;
+  }
 }

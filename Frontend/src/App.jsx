@@ -13,7 +13,7 @@ import Blog from "./Components/Pages/Blog/Blog";
 import Home from "./Components/Pages/Home/Home";
 import FilterPage from "./Components/Pages/FilterPage/FilterPage";
 import Faq from "./Components/Pages/Faq/Faq";
-// import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
+import PrivacyPolicy from "./Components/Pages/PrivacyPolicy/PrivacyPolicy";
 import Admin from "./Components/Admin/Admin";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./Components/Admin/Login/Login";
@@ -24,6 +24,8 @@ import { Categories } from "./Components/Pages/Blog/Categories/Categories";
 import { EducationConferences } from "./Components/Pages/Blog/Categories/EducationConferences";
 import { Conference } from "./Components/Pages/Blog/Categories/Conference";
 import { AllConferenceAlert } from "./Components/Pages/Blog/Categories/AllConferenceAlert";
+import EventDetails from "./Components/Pages/Events/EventDetails/EventDetails";
+import Research from "./Components/Pages/Research/Research";
 
 function App() {
   const location = useLocation();
@@ -56,13 +58,17 @@ function App() {
           path="/blog/categories/education-conferences"
           element={<EducationConferences />}
         />
-        <Route path="/blog/categories/AllConferenceAlert"
-        element={<AllConferenceAlert/>} />
+        <Route
+          path="/blog/categories/AllConferenceAlert"
+          element={<AllConferenceAlert />}
+        />
         <Route path="/blog/categories/conference" element={<Conference />} />
         <Route path="/Contact-us" element={<ContactUs />} />
         <Route path="/ScientificEvents" element={<Events />} />
+        <Route path="/eventdetails/:id" element={<EventDetails />} />
         <Route path="/faq" element={<Faq />} />
-        {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+        <Route path="/research" element={<Research />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/admin/login" element={<Login />} />
         <Route
           path="/admin"
