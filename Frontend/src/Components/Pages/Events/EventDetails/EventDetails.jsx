@@ -80,12 +80,42 @@ const EventDetails = () => {
             }`}
           >
             <Link to="/research" state={{ name, date, eventlocation }}>
-              <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded">
+              <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center">
                 Attend
               </button>
             </Link>
-            <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center">
-              Add to Calender <span className="ml-2">+</span>
+            {/* In here i have added a google calender */}
+            <button
+              className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center"
+              onClick={() => {
+                const [day, month, year] = date.split("-");
+                const parsedDate = new Date(`${year}-${month}-${day}T00:00:00`);
+
+                if (isNaN(parsedDate.getTime())) {
+                  console.error("Invalid Date Format:", date);
+                  alert("Event date is invalid. Please check the date format.");
+                  return;
+                }
+
+                const startDate = parsedDate
+                  .toISOString()
+                  .replace(/-|:|\.\d+/g, "");
+                const endDate = new Date(parsedDate.getTime() + 3600000)
+                  .toISOString()
+                  .replace(/-|:|\.\d+/g, "");
+
+                const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                  name
+                )}&dates=${startDate}/${endDate}&location=${encodeURIComponent(
+                  eventlocation
+                )}&details=${encodeURIComponent(
+                  "Join us for an engaging conference!"
+                )}`;
+
+                window.open(calendarUrl, "_blank");
+              }}
+            >
+              Add to Calendar <span className="ml-2">+</span>
             </button>
           </div>
         </div>
@@ -102,12 +132,41 @@ const EventDetails = () => {
         >
           <div className="flex justify-center gap-4">
             <Link to="/research" state={{ name, date, eventlocation }}>
-              <button className="bg-red-900 hover:bg-red-800 text-white px-6  rounded">
+              <button className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center">
                 Attend
               </button>
             </Link>
-            <button className="bg-red-900 hover:bg-red-800 text-white px-6  rounded flex items-center">
-              Add to Calender <span className="ml-2">+</span>
+            <button
+              className="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded flex items-center"
+              onClick={() => {
+                const [day, month, year] = date.split("-");
+                const parsedDate = new Date(`${year}-${month}-${day}T00:00:00`);
+
+                if (isNaN(parsedDate.getTime())) {
+                  console.error("Invalid Date Format:", date);
+                  alert("Event date is invalid. Please check the date format.");
+                  return;
+                }
+
+                const startDate = parsedDate
+                  .toISOString()
+                  .replace(/-|:|\.\d+/g, "");
+                const endDate = new Date(parsedDate.getTime() + 3600000)
+                  .toISOString()
+                  .replace(/-|:|\.\d+/g, "");
+
+                const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+                  name
+                )}&dates=${startDate}/${endDate}&location=${encodeURIComponent(
+                  eventlocation
+                )}&details=${encodeURIComponent(
+                  "Join us for an engaging conference!"
+                )}`;
+
+                window.open(calendarUrl, "_blank");
+              }}
+            >
+              Add to Calendar <span className="ml-2">+</span>
             </button>
           </div>
         </div>

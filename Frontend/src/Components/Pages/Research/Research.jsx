@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function Research() {
   const [formData, setFormData] = useState({
@@ -9,15 +9,34 @@ export default function Research() {
     country: "",
     mobile: "",
     researchField: "",
-    interestedIn: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const location = useLocation();
   const { name, date, eventlocation } = location.state || {};
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/research",
+        formData
+      );
+      console.log(response);
+      alert("Research submitted successfully");
+    } catch (error) {
+      console.error(error);
+      alert("Error submitting research");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -31,7 +50,10 @@ export default function Research() {
         </p>
         <p className="text-yellow-300 mb-6">PHYSICAL / DIGITAL CONFERENCE</p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded">
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed"
+            disabled
+          >
             REGISTER NOW
           </button>
           <Link to="/submit" state={{ name }}>
@@ -39,7 +61,11 @@ export default function Research() {
               PAPER SUBMISSION
             </button>
           </Link>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded">
+          {}
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded disabled:bg-gray-500 disabled:text-gray-300 disabled:cursor-not-allowed"
+            disabled
+          >
             ONLINE PRESENTATION
           </button>
         </div>
@@ -52,28 +78,28 @@ export default function Research() {
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-red-900 mb-4">OVERVIEW</h2>
             <p className="text-gray-700 mb-4">
-              The upcoming (ICPMS-25) at Algiers, Algeria has been organized on
-              9th - 10th January 2025 and scheduled to alleviate this exact
-              challenge by serving as a focal point for reseachers in the
-              discipline of Promotional Marketing Strategies from the world over
-              to gather together, learn from one another, impart and propagate
-              their expertise, and put in place policies and mechanisms that
-              will safeguard the stedfast growth and advancement of Promotional
-              Marketing Strategies. In addition, participants of this event will
-              be privileged with numerous opportunities to ensure their own
-              personal advancement - be it in their studies, research work,
-              career, or entrepreneurial endeavors
+              This exact challenge will be lessened by the upcoming
+              International Conference on Promotional Marketing Strategies
+              (ICPMS-25) in Algiers, Algeria, which is scheduled for January
+              9–10, 2025. It will serve as a hub for researchers in the field of
+              Promotional Marketing Strategies from around the globe to come
+              together, share and exchange knowledge, and establish policies and
+              procedures that will ensure the discipline's unwavering growth and
+              advancement. Additionally, attendees of this event will have
+              access to a wealth of chances to secure their own personal growth,
+              whether in their academic pursuits, research projects, careers, or
+              business ventures.
             </p>
           </section>
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-red-900 mb-4">OBJECTIVE</h2>
             <p className="text-gray-700 mb-4">
-              The (ICPMS-25) aims to be this all-so-necessary rocket fuel of
-              progress for the field of Promotional Marketing Strategies by
-              providing everyone from students and educators to researchers,
-              entrepreneurs, and industry professionals, the inspiration,
-              intellectual stimulation, and radical ingenuity that they need to
-              be able to go out there and achieve big things.
+              By giving everyone—from students and educators to researchers,
+              entrepreneurs, and industry professionals—the motivation,
+              intellectual stimulation, and radical ingenuity they need to go
+              out there and accomplish great things, the ICPMS-25 seeks to be
+              the much-needed rocket fuel of advancement for the field of
+              promotional marketing strategies.
             </p>
           </section>
         </div>
@@ -88,7 +114,6 @@ export default function Research() {
                 "PRESENTER REGISTRATION FORM",
                 "LISTENER REGISTRATION FORM",
                 "SAMPLE FULL PAPER",
-                "FLYER DOWNLOAD",
               ].map((item) => (
                 <button
                   key={item}
@@ -139,56 +164,59 @@ export default function Research() {
               type="text"
               placeholder="Full Name"
               className="w-full p-2 border rounded"
+              name="fullName"
               value={formData.fullName}
-              onChange={(e) =>
-                setFormData({ ...formData, fullName: e.target.value })
-              }
+              onChange={handleChange}
             />
             <input
               type="email"
               placeholder="Email id"
               className="w-full p-2 border rounded"
+              name="email"
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={handleChange}
             />
             <select
               className="w-full p-2 border rounded"
+              name="country"
               value={formData.country}
-              onChange={(e) =>
-                setFormData({ ...formData, country: e.target.value })
-              }
+              onChange={handleChange}
             >
               <option value="">Select Country Code</option>
+              <option value="IN">India</option>
               <option value="US">United States</option>
               <option value="UK">United Kingdom</option>
               <option value="FR">France</option>
-              {/* Add more countries as needed */}
+              <option value="AL">Algeria</option>
+              <option value="EG">Egypt</option>
+              <option value="SA">Saudi Arabia</option>
+              <option value="QA">Qatar</option>
+              <option value="AE">United Arab Emirates</option>
+              <option value="KW">Kuwait</option>
+              <option value="BH">Bahrain</option>
+              <option value="OM">Oman</option>
             </select>
             <input
               type="tel"
               placeholder="Mobile number"
               className="w-full p-2 border rounded"
+              name="mobile"
               value={formData.mobile}
-              onChange={(e) =>
-                setFormData({ ...formData, mobile: e.target.value })
-              }
+              onChange={handleChange}
             />
             <input
               type="text"
               placeholder="Research Field"
               className="w-full p-2 border rounded"
+              name="researchField"
               value={formData.researchField}
-              onChange={(e) =>
-                setFormData({ ...formData, researchField: e.target.value })
-              }
+              onChange={handleChange}
             />
             <button
               type="submit"
               className="w-full bg-red-800 hover:bg-red-600 text-white px-6 py-3 rounded"
             >
-              SEND MESSAGE
+              {isLoading ? "Loading..." : "SUBSCRIBE"}
             </button>
           </form>
         </section>

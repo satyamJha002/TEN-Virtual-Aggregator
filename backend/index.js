@@ -7,8 +7,11 @@ import submissionRoutes from "./routes/submission.js";
 import journalRoute from "./routes/journalRoute.js";
 import contactRoute from "./routes/contactRoute.js";
 import eventRoute from "./routes/addEventRoute.js";
+import paperSubmissionRoute from "./routes/paperSubmissionRoute.js";
+import brochureRoute from "./routes/brochureRoute.js";
+import researchRoute from "./routes/researchRoute.js";
 import sciEventsRoute from "./routes/sciEventsRoute.js";
-import adminRoute from "./routes/adminRoute.js"
+import adminRoute from "./routes/adminRoute.js";
 
 dotenv.config();
 const app = express();
@@ -27,6 +30,11 @@ app.use("/submit", submissionRoutes);
 app.use("/api", contactRoute);
 app.use("/api", journalRoute);
 app.use("/api", eventRoute);
+app.use("/api", paperSubmissionRoute);
+app.use("/api", brochureRoute);
+app.use("/api", researchRoute);
+app.use("/api", sciEventsRoute);
+app.use("/api/admin", adminRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Virtual Conference");
