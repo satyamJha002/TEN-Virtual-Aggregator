@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const App = () => {
   const fileInputRef = useRef(null); // Reference for the file input
   const location = useLocation();
-  const { title, name } = location.state || {};
 
   const [formData, setFormData] = useState({
     authorName: "",
